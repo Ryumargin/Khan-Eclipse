@@ -1,4 +1,4 @@
-# 🌿 KhanCheetus
+# ⭐ KhanCheetus
 ### The most advanced KhanCheetus cheat.
 
 🙂 Stable:
