@@ -92,8 +92,8 @@ dropdownMenu.innerHTML = `
     <style>
         input[type="checkbox"] {appearance: none; width: 15px; height: 15px; background-color: #3a3a3b;
         border: 1px solid #acacac; border-radius: 3px; margin-right: 5px; cursor: pointer;}
-        input[type="checkbox"]:checked {background-color: #FFA500; border-color: #720fb8;}
-        input[type="text"], input[type="number"], input[type="range"] {width: calc(100% - 10px); border: 1px solid #343434; 
+        input[type="checkbox"]:checked {background-color: #FFA500; border-color: #FFA500;}
+        input[type="text"], input[type="number"], input[type="range"] {width: calc(100% - 10px); border: 1px solid #FFA500; 
         color: white; accent-color: #FFA500; background-color: #FFA500; padding: 3px; border-radius: 3px; background: none;}
         label {display: flex; align-items: center; color: #3a3a3b; padding-top: 3px;}
     </style>
