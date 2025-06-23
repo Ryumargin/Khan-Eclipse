@@ -33,7 +33,6 @@ function setupMain(){
     (function () {
         const phrases = [ 
             "🔥 Get good, get [KhanCheetus](https://github.com/Ryumargin/KhanCheetus/)!",
-            "🤍 Made by [Ryumargin](https://e-z.bio/sounix).",
             "☄️ By [Ryumargin/KhanCheetus](https://github.com/Ryumargin/KhanCheetus/).",
             "🌟 Star the project on [GitHub](https://github.com/Ryumargin/KhanCheetus/)!",
             "🪶 Lite mode @ KhanCheetusMinimal.js",
