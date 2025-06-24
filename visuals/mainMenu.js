@@ -70,7 +70,8 @@ Object.assign(watermark.style, {
 if (device.mobile) watermark.style.left = '55%'
 
 // Adicionado ID para o nome Khan Cheetus para aplicar animação RGB
-watermark.innerHTML = `<span id="khanCheetusName" style="text-shadow: -1px 0.5px 0 #ffa500, -2px 0px 0 #ffa500;">Khan Cheetus</span> <span style="color:gray; padding-left:2px; font-family: Arial, sans-serif; font-size:10px">${ver}</span>`; // Changed KW to KC
+watermark.innerHTML = `<span id="khanCheetusName">Khan Cheetus</span> <span style="color:gray; padding-left:2px; font-family: Arial, sans-serif; font-size:10px">${ver}</span>`;
+
 
 document.body.appendChild(watermark);
 
