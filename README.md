@@ -18,6 +18,10 @@ javascript:fetch("https://raw.githubusercontent.com/Ryumargin/KhanCheetus/refs/h
 
 ```video
 
+
+https://github.com/user-attachments/assets/3f83e6dd-964d-4ad6-aaf4-20aa947ab54a
+
+
 ```
 
 ✨ **Sobre o KhanCheetus**
