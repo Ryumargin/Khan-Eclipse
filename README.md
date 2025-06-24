@@ -14,6 +14,12 @@ Dev (beta):
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/KhanCheetus/refs/heads/main/KhanCheetus.js").then(t=>t.text()).then(eval);
 ```
 
+### Tutotial De Como usar o KhanCheetus:
+
+```video
+
+```
+
 ✨ **Sobre o KhanCheetus**
 Este script foi feito com muito carinho 💛 para te ajudar a enfrentar aquelas atividades chatinhas da *Khan Academy*.
 Originalmente criado por um amigo e agora aperfeiçoado por **Ryumargin**, o **KhanCheetus** está aqui para deixar seus estudos mais leves e rápidos 🐥📚.
