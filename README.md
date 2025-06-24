@@ -16,13 +16,12 @@ javascript:fetch("https://raw.githubusercontent.com/Ryumargin/KhanCheetus/refs/h
 
 ### Tutotial De Como usar o KhanCheetus:
 
-```video
+video:
 
 
-https://github.com/user-attachments/assets/3f83e6dd-964d-4ad6-aaf4-20aa947ab54a
+https://github.com/user-attachments/assets/a11780be-165e-40e6-8d80-61efe1dcefbd
 
 
-```
 
 ✨ **Sobre o KhanCheetus**
 Este script foi feito com muito carinho 💛 para te ajudar a enfrentar aquelas atividades chatinhas da *Khan Academy*.
