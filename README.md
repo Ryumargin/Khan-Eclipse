@@ -1,6 +1,6 @@
 # ⭐ KhanCheetus
 
-### O script mais fofinho (e poderoso) para te ajudar na Khan Academy! 🐥✨
+### O script (e poderoso) para te ajudar na Khan Academy! 🐥✨
 
 Estável:
 
