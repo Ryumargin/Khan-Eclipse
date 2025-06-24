@@ -43,7 +43,7 @@ plppdo.on('domChanged', () => {
                             padding: 20px; 
                             border-radius: 10px; 
                             background: #1e1e1e; 
-                            box-shadow: 0px 0px 15px none; 
+                            box-shadow: 0px 0px 15px rgba(0,0,0,0.5); 
                             display: flex; 
                             flex-direction: column; 
                             justify-content: space-between;
@@ -76,7 +76,7 @@ plppdo.on('domChanged', () => {
                             font-family: monospace; 
                             white-space: pre-wrap; 
                             border-radius: 5px; 
-                            border: 1px solid none;
+                            border: 1px solid #333;
                             margin: 10px auto; /* Centraliza horizontalmente */
                         }
                         input[type="checkbox"] { 
