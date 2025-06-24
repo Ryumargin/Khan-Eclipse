@@ -90,6 +90,7 @@ Object.assign(dropdownMenu.style, {
     color: 'white', fontSize: '13px', fontFamily: 'Monospace, sans-serif',
     display: 'none', flexDirection: 'column', zIndex: '1000', padding: '10px', // Aumentado o padding
     cursor: 'default', userSelect: 'none', transition: 'transform 0.3s ease, background-color 0.3s ease', // Adicionado transição para background
+    boxShadow: '0px 0px 20px rgba(0, 255, 255, 0.3), 0px 0px 10px rgba(255, 0, 255, 0.3)' // Efeito de sombra neon
 });
 
 dropdownMenu.innerHTML = `
@@ -140,8 +141,82 @@ dropdownMenu.innerHTML = `
             transform: translateX(18px); /* Move o slider para a direita */
         }
 
-        input[type="text"], input[type="number"], input[type="range"] {width: calc(100% - 10px); border: 1px solid #ffa500; 
-        color: white; accent-color: #ffa500; background-color: #ffa500; padding: 3px; border-radius: 3px; background: none;}
+        /* Estilo para input[type="text"], input[type="number"] */
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 10px);
+            border: 1px solid #ffa500;
+            color: white;
+            padding: 3px;
+            border-radius: 3px;
+            background: none; /* Fundo transparente */
+        }
+
+        /* NOVO ESTILO PARA A SEEKBAR (input[type="range"]) */
+        input[type="range"] {
+            -webkit-appearance: none; /* Remove a aparência padrão do navegador */
+            width: calc(100% - 10px); /* Ajusta a largura */
+            height: 8px; /* Altura da barra */
+            background: #3a3a3b; /* Cor de fundo da trilha (cinza escuro como o checkbox desativado) */
+            border-radius: 5px; /* Bordas arredondadas para a trilha */
+            outline: none; /* Remove o contorno ao focar */
+            transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+            margin-top: 5px; /* Espaçamento superior */
+            accent-color: #ffa500; /* Cor do preenchimento da barra (para navegadores que suportam) */
+        }
+
+        /* Estilo do "thumb" (o controle deslizante) para Webkit (Chrome, Safari) */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Remove a aparência padrão */
+            width: 20px; /* Largura do thumb */
+            height: 20px; /* Altura do thumb */
+            border-radius: 50%; /* Torna o thumb circular */
+            background: #ffa500; /* Cor laranja como o checkbox ativado */
+            cursor: grab; /* Cursor de arrastar */
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.7); /* Sombra para dar profundidade */
+            margin-top: -6px; /* Ajusta a posição vertical do thumb */
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transições suaves */
+            border: 1px solid #ffa500; /* Borda para combinar com o checkbox */
+        }
+
+        input[type="range"]::-webkit-slider-thumb:active {
+            cursor: grabbing; /* Cursor ao arrastar */
+            transform: scale(1.1); /* Pequeno aumento ao arrastar */
+        }
+
+        /* Estilo do "thumb" (o controle deslizante) para Firefox */
+        input[type="range"]::-moz-range-thumb {
+            width: 20px; /* Largura do thumb */
+            height: 20px; /* Altura do thumb */
+            border-radius: 50%; /* Torna o thumb circular */
+            background: #ffa500; /* Cor laranja como o checkbox ativado */
+            cursor: grab; /* Cursor de arrastar */
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.7); /* Sombra para dar profundidade */
+            border: 1px solid #ffa500; /* Borda para combinar com o checkbox */
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transições suaves */
+        }
+
+        input[type="range"]::-moz-range-thumb:active {
+            cursor: grabbing; /* Cursor ao arrastar */
+            transform: scale(1.1); /* Pequeno aumento ao arrastar */
+        }
+
+        /* Estilo da trilha preenchida (para navegadores que não suportam accent-color) */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #ffa500 var(--range-progress, 50%), #3a3a3b var(--range-progress, 50%));
+            border-radius: 5px;
+            height: 8px;
+        }
+        input[type="range"]::-moz-range-track {
+            background: #3a3a3b;
+            border-radius: 5px;
+            height: 8px;
+        }
+        input[type="range"]::-moz-range-progress {
+            background-color: #ffa500;
+            border-radius: 5px;
+            height: 8px;
+        }
+
         label {display: flex; align-items: center; color: #ccc; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1);} /* Ajustado cor do texto e borda */
         label:last-of-type { border-bottom: none; } /* Remove a borda do último item */
     </style>
@@ -176,7 +251,17 @@ addFeature(featuresList);
 handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo']);
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
-handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
+handleInput('autoAnswerDelay', value => {
+    // Lógica para atualizar a variável CSS para o preenchimento da seekbar
+    const seekbarElement = document.getElementById('autoAnswerDelay');
+    if (seekbarElement) {
+        // Calcula a porcentagem do valor atual em relação ao min/max
+        const percentage = ((value - seekbarElement.min) / (seekbarElement.max - seekbarElement.min)) * 100;
+        seekbarElement.style.setProperty('--range-progress', `${percentage}%`);
+    }
+    // Lógica original do KhanCheetus para o autoAnswerDelay
+    featureConfigs.autoAnswerDelay = 4 - value;
+});
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('orange', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
