@@ -1,27 +1,39 @@
 # ⭐ KhanCheetus
-### The most advanced KhanCheetus cheat.
 
-Stable:
+### O script mais fofinho (e poderoso) para te ajudar na Khan Academy! 🐥✨
+
+Estável:
+
 ```js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/KhanCheetus/refs/heads/main/KhanCheetus.js").then(t=>t.text()).then(eval);
 ```
+
 Dev (beta):
+
 ```js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/KhanCheetus/refs/heads/main/KhanCheetus.js").then(t=>t.text()).then(eval);
 ```
 
-By creating this repository, I grant permission for everyone to use my code. However, since it is licensed under the GPL, any modifications or distributions must also be open source.
+✨ **Sobre o KhanCheetus**
+Este script foi feito com muito carinho 💛 para te ajudar a enfrentar aquelas atividades chatinhas da *Khan Academy*.
+Originalmente criado por um amigo e agora aperfeiçoado por **Ryumargin**, o **KhanCheetus** está aqui para deixar seus estudos mais leves e rápidos 🐥📚.
+Use com responsabilidade, divirta-se e compartilhe com os amigos que também precisam de uma ajudinha ✨😉
 
-Thank you all for your support over the last few months.
+> 💬 *"Mesmo nos dias mais difíceis, a gente merece uma forcinha, né?"*
 
-Take a look at other projects like Khan Destroyer. Although it's quite broken, my code might help fix it properly!
+💛 Muito obrigado a todos que apoiaram esse projeto nos últimos tempos!
 
-### As gaben once said:
-> _"After 9 years in development hopefully it will be worth the wait, thanks and have fun."_
+Se quiser ver outros scripts, dá uma olhadinha no **Khan Destroyer**. Ele ainda tá meio quebrado, mas talvez meu código ajude a consertar 🛠️🐣
 
---- 
-Copyright (C) 2024 Nix
+---
 
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+🧡 **Licença e direitos**
+Este repositório está sob a licença GPL (General Public License), então você pode usar, modificar e compartilhar este código à vontade — mas lembre-se: qualquer modificação ou redistribuição também precisa ser *open source*, ok? 🔓
+
+📝 Este programa é software livre; você pode redistribuí-lo e/ou modificá-lo sob os termos da Licença Pública Geral GNU conforme publicada pela Free Software Foundation, na versão 3 da Licença ou (a seu critério) qualquer versão posterior.
+
+Este programa é distribuído na esperança de que seja útil, mas **SEM QUALQUER GARANTIA**, até mesmo sem a garantia implícita de **COMERCIALIZAÇÃO** ou **ADEQUAÇÃO A UM DETERMINADO PROPÓSITO**. Veja a Licença Pública Geral GNU para mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU junto com este programa. Se não, veja: [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/)
+
+🐥 Com carinho,
+**Copyright (C) 2024 Ryumargin**
