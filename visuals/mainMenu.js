@@ -90,6 +90,7 @@ Object.assign(dropdownMenu.style, {
     color: 'white', fontSize: '13px', fontFamily: 'Monospace, sans-serif',
     display: 'none', flexDirection: 'column', zIndex: '1000', padding: '10px', // Aumentado o padding
     cursor: 'default', userSelect: 'none', transition: 'transform 0.3s ease, background-color 0.3s ease', // Adicionado transição para background
+    backdropFilter: 'none'
 });
 
 dropdownMenu.innerHTML = `
