@@ -1,4 +1,4 @@
-# ⭐ KhanCheetus
+# ⭐ KhanCheetus em Manutenção ❌
 
 ### O script (e poderoso) para te ajudar na Khan Academy! 🐥✨
 
