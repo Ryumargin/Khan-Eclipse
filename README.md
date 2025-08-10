@@ -1,6 +1,6 @@
-# ⭐ KhanCheetus em Manutenção ❌
+# 🌿 KhanPchan
 
-### O script (e poderoso) para te ajudar na Khan Academy! 🐥✨
+Para injetar o script, use os seguintes comandos:
 
-🐥 Com carinho,
-**Copyright (C) 2025 Ryumargin**
+```javascript
+javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Pchan/refs/heads/main/KhanPchan.js").then(t=>t.text()).then(eval);
