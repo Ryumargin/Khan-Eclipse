@@ -172,71 +172,86 @@ dropdownMenu.innerHTML = `
             background: none; /* Fundo transparente */
         }
 
-        /* NOVO ESTILO PARA A SEEKBAR (input[type="range"]) */
-        }
-        
-input[type="range"].range1 {
-    -webkit-appearance: none; /* Remove aparência padrão */
-    width: calc(100% - 10px);
-    height: 8px;
-    background: #3a3a3b; /* trilha de fundo */
-    border-radius: 5px;
-    outline: none;
-    transition: background-color 0.3s ease;
-    margin-top: 5px;
-    accent-color: #b87400; /* para navegadores que suportam */
+/* NOVO ESTILO PARA A SEEKBAR (input[type="range"]) */
+input[type="range"] {
+    -webkit-appearance: none; /* Remove a aparência padrão do navegador */
+    width: calc(100% - 10px); /* Ajusta a largura */
+    height: 20px; /* Barra mais alta */
+    background: #3a3a3b; /* Cor de fundo da trilha (cinza escuro) */
+    border-radius: 50px; /* Bordas mais arredondadas */
+    outline: none; /* Remove o contorno ao focar */
+    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+    margin-top: 5px; /* Espaçamento superior */
+    /* accent-color: #ffa500; */ /* Removido, pois vamos controlar o preenchimento da trilha manualmente para maior compatibilidade */
+    padding: 0; /* Remove padding */
 }
 
-/* Thumb Webkit (Chrome, Edge, Safari) */
-input[type="range"].range1::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #b87400;
-    cursor: grab;
-    box-shadow: 0 0 5px rgba(184, 116, 0, 0.7);
-    margin-top: -5px;
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease;
-    border: 1px solid #b87400;
-}
-input[type="range"].range1::-webkit-slider-thumb:active {
-    cursor: grabbing;
-    transform: scale(1.1);
+/* Estilo do "thumb" (a bolinha) para Webkit (Chrome, Safari) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove a aparência padrão */
+    width: 18px; /* Largura da bolinha */
+    height: 18px; /* Altura da bolinha */
+    border-radius: 50%; /* Torna a bolinha circular */
+    background: #ffa500; /* Cor laranja para a bolinha */
+    cursor: grab; /* Cursor de arrastar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Sombra para dar profundidade */
+    margin-top: -1px; /* Ajusta a posição vertical da bolinha para centralizar na barra de 20px de altura */
+    transition: all 0.2s ease; /* Transições suaves */
+    border: none; /* Garante que não há borda indesejada */
 }
 
-/* Thumb Firefox */
-input[type="range"].range1::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #b87400;
-    cursor: grab;
-    box-shadow: 0 0 5px rgba(184, 116, 0, 0.7);
-    border: 1px solid #b87400;
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease;
-}
-input[type="range"].range1::-moz-range-thumb:active {
-    cursor: grabbing;
-    transform: scale(1.1);
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1); /* Pequeno aumento ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.6); /* Sombra ao passar o mouse, com cor laranja */
 }
 
-/* Trilha preenchida Webkit */
-input[type="range"].range1::-webkit-slider-runnable-track {
-    background: linear-gradient(to right, #b87400 var(--range-progress, 50%), #3a3a3b var(--range-progress, 50%));
-    border-radius: 5px;
-    height: 8px;
+input[type="range"]::-webkit-slider-thumb:active {
+    cursor: grabbing; /* Cursor ao arrastar */
+    transform: scale(1.1); /* Pequeno aumento ao arrastar */
 }
-/* Firefox trilha */
-input[type="range"].range1::-moz-range-track {
-    background: #3a3a3b;
-    border-radius: 5px;
-    height: 8px;
+
+/* Estilo do "thumb" (a bolinha) para Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 18px; /* Largura da bolinha */
+    height: 18px; /* Altura da bolinha */
+    border-radius: 50%; /* Torna a bolinha circular */
+    background: #ffa500; /* Cor laranja para a bolinha */
+    cursor: grab; /* Cursor de arrastar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Sombra para dar profundidade */
+    border: none; /* Garante que não há borda indesejada */
+    transition: all 0.2s ease; /* Transições suaves */
 }
-input[type="range"].range1::-moz-range-progress {
-    background-color: #b87400;
-    border-radius: 5px;
-    height: 8px;
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.1); /* Pequeno aumento ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.6); /* Sombra ao passar o mouse, com cor laranja */
+}
+
+input[type="range"]::-moz-range-thumb:active {
+    cursor: grabbing; /* Cursor ao arrastar */
+    transform: scale(1.1); /* Pequeno aumento ao arrastar */
+}
+
+/* Estilo da trilha preenchida (a barra) para Webkit (Chrome, Safari) */
+input[type="range"]::-webkit-slider-runnable-track {
+    /* Usamos um gradiente linear para simular a parte preenchida e não preenchida */
+    background: linear-gradient(to right, #ffa500 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%));
+    border-radius: 50px;
+    height: 20px;
+}
+
+/* Estilo da trilha para Firefox */
+input[type="range"]::-moz-range-track {
+    background: #3a3a3b; /* Cor de fundo da trilha não preenchida */
+    border-radius: 50px;
+    height: 20px;
+}
+
+/* Estilo da parte preenchida da trilha para Firefox */
+input[type="range"]::-moz-range-progress {
+    background-color: #ffa500; /* Cor laranja para a parte preenchida */
+    border-radius: 50px;
+    height: 20px;
 }
 
         label {display: flex; align-items: center; color: #ccc; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1);} /* Ajustado cor do texto e borda */
