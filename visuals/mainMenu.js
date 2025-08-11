@@ -152,7 +152,7 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #fff; /* Cor da bolinha, combinando com o slider do checkbox */
+    background-color: #3a3a3b; /* Cor da bolinha, combinando com o slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
@@ -177,7 +177,7 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #fff; /* Cor da bolinha, combinando com o slider do checkbox */
+    background-color: #3a3a3b; /* Cor da bolinha, combinando com o slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
@@ -259,9 +259,6 @@ label {
 label:last-of-type {
     border-bottom: none;
 }
-
-        label {display: flex; align-items: center; color: #ccc; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1);} /* Ajustado cor do texto e borda */
-        label:last-of-type { border-bottom: none; } /* Remove a borda do último item */
     </style>
 `;
 
