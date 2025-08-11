@@ -172,84 +172,64 @@ dropdownMenu.innerHTML = `
             background: none; /* Fundo transparente */
         }
 
-/* NOVO ESTILO PARA A SEEKBAR (input[type="range"]) */
+/* ESTILO REVISADO DA SEEKBAR */
 input[type="range"] {
-    -webkit-appearance: none; /* Remove a aparência padrão do navegador */
-    width: calc(100% - 10px); /* Ajusta a largura */
-    height: 20px; /* Barra mais alta */
-    background: #3a3a3b; /* Cor de fundo da trilha (cinza escuro) */
-    border-radius: 50px; /* Bordas mais arredondadas */
-    outline: none; /* Remove o contorno ao focar */
-    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
-    margin-top: 5px; /* Espaçamento superior */
-    /* accent-color: #ffa500; */ /* Removido, pois vamos controlar o preenchimento da trilha manualmente para maior compatibilidade */
-    padding: 0; /* Remove padding */
+    -webkit-appearance: none;
+    width: calc(100% - 10px);
+    height: 20px;
+    background: #3a3a3b;
+    border-radius: 50px;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+    padding: 0;
 }
-
-/* Estilo do "thumb" (a bolinha) para Webkit (Chrome, Safari) */
+/* BOLINHA PARA WEBKIT */
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Remove a aparência padrão */
-    width: 18px; /* Largura da bolinha */
-    height: 18px; /* Altura da bolinha */
-    border-radius: 50%; /* Torna a bolinha circular */
-    background: #ffa500; /* Cor laranja para a bolinha */
-    cursor: grab; /* Cursor de arrastar */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Sombra para dar profundidade */
-    margin-top: -1px; /* Ajusta a posição vertical da bolinha para centralizar na barra de 20px de altura */
-    transition: all 0.2s ease; /* Transições suaves */
-    border: none; /* Garante que não há borda indesejada */
+    -webkit-appearance: none;
+    width: 16px; /* Reduzido de 18px */
+    height: 16px; /* Reduzido de 18px */
+    border-radius: 50%;
+    background: #222; /* Cor alterada para #222 */
+    cursor: grab;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    margin-top: 2px; /* Ajuste fino de posicionamento */
+    transition: all 0.2s ease;
+    border: none;
 }
-
 input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.1); /* Pequeno aumento ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.6); /* Sombra ao passar o mouse, com cor laranja */
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
 
-input[type="range"]::-webkit-slider-thumb:active {
-    cursor: grabbing; /* Cursor ao arrastar */
-    transform: scale(1.1); /* Pequeno aumento ao arrastar */
-}
-
-/* Estilo do "thumb" (a bolinha) para Firefox */
+/* BOLINHA PARA FIREFOX */
 input[type="range"]::-moz-range-thumb {
-    width: 18px; /* Largura da bolinha */
-    height: 18px; /* Altura da bolinha */
-    border-radius: 50%; /* Torna a bolinha circular */
-    background: #ffa500; /* Cor laranja para a bolinha */
-    cursor: grab; /* Cursor de arrastar */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Sombra para dar profundidade */
-    border: none; /* Garante que não há borda indesejada */
-    transition: all 0.2s ease; /* Transições suaves */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #222;
+    cursor: grab;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    border: none;
+    transition: all 0.2s ease;
 }
-
 input[type="range"]::-moz-range-thumb:hover {
-    transform: scale(1.1); /* Pequeno aumento ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.6); /* Sombra ao passar o mouse, com cor laranja */
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
-
-input[type="range"]::-moz-range-thumb:active {
-    cursor: grabbing; /* Cursor ao arrastar */
-    transform: scale(1.1); /* Pequeno aumento ao arrastar */
-}
-
-/* Estilo da trilha preenchida (a barra) para Webkit (Chrome, Safari) */
+/* PARTE PREENCHIDA DA BARRA */
 input[type="range"]::-webkit-slider-runnable-track {
-    /* Usamos um gradiente linear para simular a parte preenchida e não preenchida */
-    background: linear-gradient(to right, #ffa500 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%));
+    background: linear-gradient(to right, #ffa500 var(--range-progress), #3a3a3b 0);
     border-radius: 50px;
     height: 20px;
 }
-
-/* Estilo da trilha para Firefox */
 input[type="range"]::-moz-range-track {
-    background: #3a3a3b; /* Cor de fundo da trilha não preenchida */
+    background: #3a3a3b;
     border-radius: 50px;
     height: 20px;
 }
-
-/* Estilo da parte preenchida da trilha para Firefox */
 input[type="range"]::-moz-range-progress {
-    background-color: #ffa500; /* Cor laranja para a parte preenchida */
+    background-color: #ffa500;
     border-radius: 50px;
     height: 20px;
 }
@@ -290,18 +270,22 @@ handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
 // --- INÍCIO DO CÓDIGO A SER ADICIONADO ---
-// Exemplo de como atualizar a variável CSS para o progresso
-const rangeInput = document.getElementById('autoAnswerDelay'); // O ID do seu input range
-if (rangeInput) {
-    // Adiciona um listener para atualizar a variável CSS sempre que o valor do range mudar
-    rangeInput.addEventListener('input', (e) => {
-        const value = (e.target.value - e.target.min) / (e.target.max - e.target.min) * 100;
-        e.target.style.setProperty('--range-progress', `${value}%`);
-    });
-    // Define o valor inicial da variável CSS ao carregar a página/menu
-    // Isso garante que a barra de progresso esteja correta desde o início
-    const initialValue = (rangeInput.value - rangeInput.min) / (rangeInput.max - rangeInput.max) * 100;
-    rangeInput.style.setProperty('--range-progress', `${initialValue}%`);
+// ATUALIZADOR DA BARRA DE PROGRESSO
+document.addEventListener('DOMContentLoaded', function() {
+    const rangeInput = document.getElementById('autoAnswerDelay'); // O ID do seu input range
+    if (rangeInput) {
+        // Atualiza ao mover
+        rangeInput.addEventListener('input', function(e) {
+            updateRangeProgress(e.target);
+        });
+        
+        // Atualiza ao carregar
+        updateRangeProgress(rangeInput);
+    }
+});
+function updateRangeProgress(range) {
+    const value = (range.value - range.min) / (range.max - range.min) * 100;
+    range.style.setProperty('--range-progress', value + '%');
 }
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
