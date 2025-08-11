@@ -116,19 +116,19 @@ Object.assign(dropdownMenu.style, {
 
 dropdownMenu.innerHTML = `
     <style>
-        /* Animação RGB para o nome Khan Cheetus */
-        @keyframes rgbColorShift {
-            0% { color: rgb(255, 0, 0); }
-            16% { color: rgb(255, 255, 0); }
-            33% { color: rgb(0, 255, 0); }
-            50% { color: rgb(0, 255, 255); }
-            66% { color: rgb(0, 0, 255); }
-            83% { color: rgb(255, 0, 255); }
-            100% { color: rgb(255, 0, 0); }
-        }
-        #khanCheetusName {
-            animation: rgbColorShift 5s infinite linear;
-        }
+/* Animação RGB para o nome Khan Cheetus */
+@keyframes rgbColorShift {
+    0% { color: rgb(255, 0, 0); }
+    16% { color: rgb(255, 255, 0); }
+    33% { color: rgb(0, 255, 0); }
+    50% { color: rgb(0, 255, 255); }
+    66% { color: rgb(0, 0, 255); }
+    83% { color: rgb(255, 0, 255); }
+    100% { color: rgb(255, 0, 0); }
+}
+#khanCheetusName {
+    animation: rgbColorShift 5s infinite linear;
+}
 
 /* ESTILO FINAL DA SEEKBAR COM LINHA LARANJA */
 input[type="range"] {
@@ -152,23 +152,21 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    /* ALTERAÇÃO AQUI: Usar linear-gradient para simular o preenchimento laranja e a bolinha branca */
-    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #fff var(--range-progress, 0%), #fff 100%);
+    background-color: #FF8C00; /* A bolinha será laranja */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
     z-index: 2;
     margin-top: 2px;
     border: none;
-    transition: transform 0.3s; /* Transição para o efeito de hover */
+    transition: transform 0.3s, background-color 0.3s; /* Adicionado transição para background-color */
 }
 
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
-/* Esta regra é ajustada para não ter um background próprio, pois o preenchimento será feito pelo thumb */
 input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
     border-radius: 10px; /* Combinando com o border-radius do range */
-    background: transparent; /* A trilha em si não terá background, o preenchimento vem do thumb */
+    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%), #3a3a3b 100%); /* Trilha preenchida em laranja, restante em cinza */
 }
 
 /* BOLINHA PARA FIREFOX */
@@ -176,11 +174,11 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #fff; /* Cor da bolinha, combinando com o slider do checkbox */
+    background-color: #FF8C00; /* A bolinha será laranja */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
-    transition: transform 0.3s; /* Transição para o efeito de hover */
+    transition: transform 0.3s, background-color 0.3s; /* Adicionado transição para background-color */
 }
 
 /* TRILHA PARA FIREFOX */
@@ -258,7 +256,6 @@ label {
 label:last-of-type {
     border-bottom: none;
 }
-
     </style>
 `;
 
