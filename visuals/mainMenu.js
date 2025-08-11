@@ -202,7 +202,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
     border-radius: 50px;
-    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%);
+    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #FF8C00 var(--range-progress), #FF8C00 100%);
 }
 
 /* BOLINHA PARA FIREFOX */
