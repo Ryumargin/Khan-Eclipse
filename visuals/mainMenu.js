@@ -177,7 +177,7 @@ input[type="range"] {
     -webkit-appearance: none;
     width: calc(100% - 10px);
     height: 20px;
-    background: #3a3a3b; /* Cor da parte não preenchida */
+    background: #FF8C00; /* Cor da parte não preenchida */
     border-radius: 50px;
     outline: none;
     margin-top: 5px;
@@ -190,7 +190,7 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #222;
+    background: #3a3a3b;
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
@@ -210,7 +210,7 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #222;
+    background: #3a3a3b;
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
