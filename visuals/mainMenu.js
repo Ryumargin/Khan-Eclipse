@@ -153,7 +153,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 16px;
     border-radius: 50%;
     /* ALTERAÇÃO AQUI: Usar linear-gradient para simular o preenchimento laranja e a bolinha branca */
-    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%), #3a3a3b 100%);
+    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #fff var(--range-progress, 0%), #fff 100%);
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
