@@ -161,7 +161,7 @@ input[type="range"]::-webkit-slider-thumb {
     border: none;
     transition: transform 0.3s; /* Transição para o efeito de hover */
     /* Adiciona uma "trilha" laranja antes da bolinha para simular o preenchimento */
-    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress, 0%), #fff var(--range-progress, 0%), #fff 100%);
+    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%), #3a3a3b 100%);
 }
 
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
@@ -226,7 +226,7 @@ input[type="checkbox"]::before {
     left: 1px;
     width: 16px;
     height: 16px;
-    background-color: #fff;
+    background-color: #3a3a3b;
     border-radius: 50%;
     transition: transform 0.3s;
 }
