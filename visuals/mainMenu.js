@@ -152,7 +152,8 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #3a3a3b; /* Cor da bolinha, combinando com o slider do checkbox */
+    /* ALTERAÇÃO AQUI: Usar linear-gradient para simular o preenchimento laranja e a bolinha branca */
+    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #fff var(--range-progress, 0%), #fff 100%);
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
@@ -160,8 +161,6 @@ input[type="range"]::-webkit-slider-thumb {
     margin-top: 2px;
     border: none;
     transition: transform 0.3s; /* Transição para o efeito de hover */
-    /* Adiciona uma "trilha" laranja antes da bolinha para simular o preenchimento */
-    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%), #3a3a3b 100%);
 }
 
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
@@ -177,7 +176,7 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #3a3a3b; /* Cor da bolinha, combinando com o slider do checkbox */
+    background-color: #fff; /* Cor da bolinha, combinando com o slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
@@ -226,7 +225,7 @@ input[type="checkbox"]::before {
     left: 1px;
     width: 16px;
     height: 16px;
-    background-color: #3a3a3b;
+    background-color: #fff;
     border-radius: 50%;
     transition: transform 0.3s;
 }
@@ -259,6 +258,7 @@ label {
 label:last-of-type {
     border-bottom: none;
 }
+
     </style>
 `;
 
@@ -292,22 +292,6 @@ handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
-// --- INÍCIO DO CÓDIGO A SER ADICIONADO ---
-// SISTEMA DE ATUALIZAÇÃO DA LINHA LARANJA
-document.addEventListener('DOMContentLoaded', function() {
-    const updateRangeProgress = (range) => {
-        const value = (range.value - range.min) / (range.max - range.min) * 100;
-        range.style.setProperty('--range-progress', value + '%');
-    };
-    const rangeInput = document.getElementById('autoAnswerDelay'); // O ID do seu input range
-    if (rangeInput) {
-        // Inicializa
-        updateRangeProgress(rangeInput);
-        
-        // Atualiza ao mover
-        rangeInput.addEventListener('input', (e) => updateRangeProgress(e.target));
-    }
-});
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
