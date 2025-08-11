@@ -65,19 +65,19 @@ Object.assign(watermark.style, {
     position: 'fixed', 
     top: '0', 
     left: '85%', 
-    width: '150px', // largura do quadrado
-    height: '150px', // altura do quadrado
+    width: '40px', // largura do quadrado menor
+    height: '40px', // altura do quadrado menor
     backgroundColor: 'RGB(0,0,0,0.5)',
     color: 'white', 
-    fontSize: '15px', 
+    fontSize: '12px', // tamanho do texto ajustado
     fontFamily: 'MuseoSans, sans-serif', 
     display: 'flex', 
     justifyContent: 'center', // centraliza o conteúdo
     alignItems: 'center', // centraliza o conteúdo
     cursor: 'default', 
     userSelect: 'none', 
-    padding: '10px', // espaço interno
-    borderRadius: '20px', // bordas arredondadas
+    padding: '0', // remove o espaço interno
+    borderRadius: '10px', // bordas arredondadas
     zIndex: '1001', 
     transition: 'transform 0.3s ease'
 });
@@ -85,8 +85,7 @@ Object.assign(watermark.style, {
 if (device.mobile) watermark.style.left = '55%'
 
 watermark.innerHTML = `
-    <span style="text-shadow: -1px 0.5px 0 #ffa435ff, -2px 0px 0 #FF8C00;">Menu Pchan</span> 
-    <span style="color:gray; padding-left:2px; font-family: Arial, sans-serif; font-size:10px">${ver}</span>
+    <span style="text-shadow: -1px 0.5px 0 #ffffff, -2px 0px 0 #ffffff;">PChan</span>
 `;
 
 document.body.appendChild(watermark);
