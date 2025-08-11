@@ -155,8 +155,8 @@ dropdownMenu.innerHTML = `
             transition: transform 0.3s;
         }
         input[type="checkbox"]:checked {
-            background-color: #ffa500; /* Cor quando ativado */
-            border-color: #ffa500;
+            background-color: #FF8C00; /* Cor quando ativado */
+            border-color: #FF8C00;
         }
         input[type="checkbox"]:checked::before {
             transform: translateX(18px); /* Move o slider para a direita */
@@ -165,7 +165,7 @@ dropdownMenu.innerHTML = `
         /* Estilo para input[type="text"], input[type="number"] */
         input[type="text"], input[type="number"] {
             width: calc(100% - 10px);
-            border: 1px solid #ffa500;
+            border: 1px solid #FF8C00;
             color: white;
             padding: 3px;
             border-radius: 3px;
@@ -202,7 +202,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
     border-radius: 50px;
-    background: linear-gradient(to right, #ffa500 0%, #ffa500 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%);
+    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%);
 }
 
 /* BOLINHA PARA FIREFOX */
@@ -219,13 +219,13 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-moz-range-track {
     height: 20px;
     border-radius: 50px;
-    background: #3a3a3b;
+    background: #FF8C00;
 }
 /* LINHA LARANJA PARA FIREFOX */
 input[type="range"]::-moz-range-progress {
     height: 20px;
     border-radius: 50px;
-    background: #ffa500;
+    background: #FF8C00;
 }
 /* EFEITOS DE HOVER */
 input[type="range"]::-webkit-slider-thumb:hover,
