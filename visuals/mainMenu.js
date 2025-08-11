@@ -289,6 +289,20 @@ handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
+// --- INÍCIO DO CÓDIGO A SER ADICIONADO ---
+// Exemplo de como atualizar a variável CSS para o progresso
+const rangeInput = document.getElementById('autoAnswerDelay'); // O ID do seu input range
+if (rangeInput) {
+    // Adiciona um listener para atualizar a variável CSS sempre que o valor do range mudar
+    rangeInput.addEventListener('input', (e) => {
+        const value = (e.target.value - e.target.min) / (e.target.max - e.target.min) * 100;
+        e.target.style.setProperty('--range-progress', `${value}%`);
+    });
+    // Define o valor inicial da variável CSS ao carregar a página/menu
+    // Isso garante que a barra de progresso esteja correta desde o início
+    const initialValue = (rangeInput.value - rangeInput.min) / (rangeInput.max - rangeInput.max) * 100;
+    rangeInput.style.setProperty('--range-progress', `${initialValue}%`);
+}
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
