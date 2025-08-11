@@ -65,11 +65,11 @@ Object.assign(watermark.style, {
     position: 'fixed', 
     top: '0', 
     left: '85%', 
-    width: '40px', // largura do quadrado menor
-    height: '40px', // altura do quadrado menor
+    width: '50px', // largura do quadrado aumentada
+    height: '50px', // altura do quadrado aumentada
     backgroundColor: 'RGB(0,0,0,0.5)',
     color: 'white', 
-    fontSize: '12px', // tamanho do texto ajustado
+    fontSize: '12px', // tamanho do texto
     fontFamily: 'MuseoSans, sans-serif', 
     display: 'flex', 
     justifyContent: 'center', // centraliza o conteúdo
@@ -85,7 +85,7 @@ Object.assign(watermark.style, {
 if (device.mobile) watermark.style.left = '55%'
 
 watermark.innerHTML = `
-    <span style="text-shadow: -1px 0.5px 0 #ffffff, -2px 0px 0 #ffffff;">PChan</span>
+    <span style="text-shadow: 0 0 2px #ffffff;">PChan</span> <!-- Sombra ajustada -->
 `;
 
 document.body.appendChild(watermark);
