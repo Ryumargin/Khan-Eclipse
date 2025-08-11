@@ -175,81 +175,68 @@ dropdownMenu.innerHTML = `
         /* NOVO ESTILO PARA A SEEKBAR (input[type="range"]) */
         }
         
-/* NOVO ESTILO PARA A SEEKBAR (input[type="range"]) */
-input[type="range"] {
-    -webkit-appearance: none; /* Remove a aparência padrão do navegador */
-    width: calc(100% - 10px); /* Ajusta a largura */
-    height: 20px; /* Barra mais alta, conforme o novo estilo */
-    background: #3a3a3b; /* Cor de fundo da trilha (cinza escuro como o checkbox desativado) */
-    border-radius: 50px; /* Bordas mais arredondadas, conforme o novo estilo */
-    outline: none; /* Remove o contorno ao focar */
-    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
-    margin-top: 5px; /* Espaçamento superior */
-    accent-color: #ffa500; /* Cor do preenchimento da barra (para navegadores que suportam) */
-    padding: 0; /* Remove padding, conforme o novo estilo */
+input[type="range"].range1 {
+    -webkit-appearance: none; /* Remove aparência padrão */
+    width: calc(100% - 10px);
+    height: 8px;
+    background: #3a3a3b; /* trilha de fundo */
+    border-radius: 5px;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+    accent-color: #b87400; /* para navegadores que suportam */
 }
 
-/* Estilo do "thumb" (o controle deslizante) para Webkit (Chrome, Safari) */
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Remove a aparência padrão */
-    width: 18px; /* Largura do thumb, conforme o novo estilo */
-    height: 18px; /* Altura do thumb, conforme o novo estilo */
-    border-radius: 50%; /* Torna o thumb circular */
-    background: #ffa500; /* Cor laranja como o checkbox ativado (mantido do original) */
-    cursor: grab; /* Cursor de arrastar */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Sombra para dar profundidade, conforme o novo estilo */
-    margin-top: -6px; /* Ajusta a posição vertical do thumb */
-    transition: all 0.2s ease; /* Transições suaves, conforme o novo estilo */
-    border: 1px solid #ffa500; /* Borda para combinar com o checkbox */
+/* Thumb Webkit (Chrome, Edge, Safari) */
+input[type="range"].range1::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #b87400;
+    cursor: grab;
+    box-shadow: 0 0 5px rgba(184, 116, 0, 0.7);
+    margin-top: -5px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease;
+    border: 1px solid #b87400;
+}
+input[type="range"].range1::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.1);
 }
 
-input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.1); /* Pequeno aumento ao passar o mouse, conforme o novo estilo */
-    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.6); /* Sombra ao passar o mouse, com cor laranja */
+/* Thumb Firefox */
+input[type="range"].range1::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #b87400;
+    cursor: grab;
+    box-shadow: 0 0 5px rgba(184, 116, 0, 0.7);
+    border: 1px solid #b87400;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease;
+}
+input[type="range"].range1::-moz-range-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.1);
 }
 
-input[type="range"]::-webkit-slider-thumb:active {
-    cursor: grabbing; /* Cursor ao arrastar */
-    transform: scale(1.1); /* Pequeno aumento ao arrastar */
+/* Trilha preenchida Webkit */
+input[type="range"].range1::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #b87400 var(--range-progress, 50%), #3a3a3b var(--range-progress, 50%));
+    border-radius: 5px;
+    height: 8px;
 }
-
-/* Estilo do "thumb" (o controle deslizante) para Firefox */
-input[type="range"]::-moz-range-thumb {
-    width: 18px; /* Largura do thumb, conforme o novo estilo */
-    height: 18px; /* Altura do thumb, conforme o novo estilo */
-    border-radius: 50%; /* Torna o thumb circular */
-    background: #ffa500; /* Cor laranja como o checkbox ativado (mantido do original) */
-    cursor: grab; /* Cursor de arrastar */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Sombra para dar profundidade, conforme o novo estilo */
-    border: 1px solid #ffa500; /* Borda para combinar com o checkbox */
-    transition: all 0.2s ease; /* Transições suaves, conforme o novo estilo */
-}
-
-input[type="range"]::-moz-range-thumb:hover {
-    transform: scale(1.1); /* Pequeno aumento ao passar o mouse, conforme o novo estilo */
-    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.6); /* Sombra ao passar o mouse, com cor laranja */
-}
-
-input[type="range"]::-moz-range-thumb:active {
-    cursor: grabbing; /* Cursor ao arrastar */
-    transform: scale(1.1); /* Pequeno aumento ao arrastar */
-}
-
-/* Estilo da trilha preenchida (para navegadores que não suportam accent-color) */
-input[type="range"]::-webkit-slider-runnable-track {
-    background: linear-gradient(to right, #ffa500 var(--range-progress, 50%), #3a3a3b var(--range-progress, 50%));
-    border-radius: 50px; /* Bordas mais arredondadas, conforme o novo estilo */
-    height: 20px; /* Altura da barra, conforme o novo estilo */
-}
-input[type="range"]::-moz-range-track {
+/* Firefox trilha */
+input[type="range"].range1::-moz-range-track {
     background: #3a3a3b;
-    border-radius: 50px; /* Bordas mais arredondadas, conforme o novo estilo */
-    height: 20px; /* Altura da barra, conforme o novo estilo */
+    border-radius: 5px;
+    height: 8px;
 }
-input[type="range"]::-moz-range-progress {
-    background-color: #ffa500;
-    border-radius: 50px; /* Bordas mais arredondadas, conforme o novo estilo */
-    height: 20px; /* Altura da barra, conforme o novo estilo */
+input[type="range"].range1::-moz-range-progress {
+    background-color: #b87400;
+    border-radius: 5px;
+    height: 8px;
 }
 
         label {display: flex; align-items: center; color: #ccc; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1);} /* Ajustado cor do texto e borda */
