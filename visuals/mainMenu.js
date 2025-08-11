@@ -185,7 +185,6 @@ input[type="range"] {
     padding: 0;
     overflow: hidden;
     cursor: pointer; /* Cursor de ponteiro como o checkbox */
-    /* Adiciona transição para as propriedades que podem mudar */
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -202,8 +201,8 @@ input[type="range"]::-webkit-slider-thumb {
     z-index: 2;
     margin-top: 2px;
     border: none;
-    /* Adiciona transição para a posição da bolinha */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Adicionado background-color para possível mudança */
+    /* A transição da bolinha será controlada principalmente pelo JS */
+    transition: transform 0.1s ease-out; /* Transição mais rápida para o hover */
 }
 
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
@@ -211,8 +210,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
     border-radius: 10px; /* Metade da altura para ser oval */
     background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%);
-    /* Adiciona transição para a propriedade background */
-    transition: background 0.3s ease;
+    transition: background 0.3s ease; /* Transição para o preenchimento */
 }
 
 /* BOLINHA PARA FIREFOX */
@@ -224,8 +222,7 @@ input[type="range"]::-moz-range-thumb {
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
-    /* Adiciona transição para a posição da bolinha */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Adicionado background-color para possível mudança */
+    transition: transform 0.1s ease-out; /* Transição mais rápida para o hover */
 }
 
 /* TRILHA PARA FIREFOX */
@@ -234,7 +231,6 @@ input[type="range"]::-moz-range-track {
     border-radius: 10px; /* Metade da altura para ser oval */
     background-color: #3a3a3b; /* Cor de fundo similar ao checkbox não marcado */
     border: 1px solid #acacac; /* Borda similar ao checkbox não marcado */
-    /* Adiciona transição para as propriedades que podem mudar */
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -243,8 +239,7 @@ input[type="range"]::-moz-range-progress {
     height: 20px;
     border-radius: 10px; /* Metade da altura para ser oval */
     background: #FF8C00; /* Cor de preenchimento similar ao checkbox marcado */
-    /* Adiciona transição para a propriedade background */
-    transition: background 0.3s ease;
+    transition: background 0.3s ease; /* Transição para o preenchimento */
 }
 
 /* EFEITOS DE HOVER */
@@ -288,22 +283,54 @@ addFeature(featuresList);
 handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo']);
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
-handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
-// --- INÍCIO DO CÓDIGO A SER ADICIONADO ---
-// SISTEMA DE ATUALIZAÇÃO DA LINHA LARANJA
-document.addEventListener('DOMContentLoaded', function() {
-    const updateRangeProgress = (range) => {
-        const value = (range.value - range.min) / (range.max - range.min) * 100;
-        range.style.setProperty('--range-progress', value + '%');
-    };
-    const rangeInput = document.getElementById('autoAnswerDelay'); // O ID do seu input range
-    if (rangeInput) {
-        // Inicializa
-        updateRangeProgress(rangeInput);
-        
-        // Atualiza ao mover
-        rangeInput.addEventListener('input', (e) => updateRangeProgress(e.target));
+let previousAutoAnswerDelayValue = 1; // Inicia com o valor padrão do slider
+
+handleInput('autoAnswerDelay', (newValue, event) => {
+    const slider = event.target;
+    const min = parseInt(slider.min);
+    const max = parseInt(slider.max);
+    const currentVisualValue = parseInt(slider.value); // Valor atual que o navegador mostra
+
+    // Se o valor visual já é o novo valor, não precisamos animar
+    if (currentVisualValue === newValue) {
+        featureConfigs.autoAnswerDelay = 4 - newValue;
+        previousAutoAnswerDelayValue = newValue;
+        return;
     }
+
+    // Desabilita temporariamente o slider para evitar interrupções durante a animação
+    slider.disabled = true;
+
+    // Determina a direção da animação
+    const direction = newValue > previousAutoAnswerDelayValue ? 1 : -1;
+
+    let currentValue = previousAutoAnswerDelayValue;
+
+    const animateSlider = () => {
+        // Move o slider um passo na direção desejada
+        currentValue += direction;
+
+        // Garante que não ultrapasse o novo valor ou os limites min/max
+        if ((direction === 1 && currentValue > newValue) || (direction === -1 && currentValue < newValue)) {
+            currentValue = newValue; // Garante que o valor final seja o desejado
+        }
+
+        slider.value = currentValue; // Atualiza o valor do slider visualmente
+        updateRangeProgress(slider); // Atualiza o preenchimento laranja
+
+        // Se ainda não chegamos ao novo valor, continua a animação
+        if (currentValue !== newValue) {
+            setTimeout(animateSlider, 100); // Pequeno atraso para cada "passo" (ajuste este valor)
+        } else {
+            // Animação concluída
+            featureConfigs.autoAnswerDelay = 4 - newValue; // Define o valor real da feature
+            previousAutoAnswerDelayValue = newValue; // Atualiza o valor anterior
+            slider.disabled = false; // Reabilita o slider
+        }
+    };
+
+    // Inicia a animação
+    animateSlider();
 });
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
