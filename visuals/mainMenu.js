@@ -185,7 +185,8 @@ input[type="range"] {
     padding: 0;
     overflow: hidden;
     cursor: pointer; /* Cursor de ponteiro como o checkbox */
-    transition: background-color 0.3s, border-color 0.3s; /* Transição para cores de fundo e borda */
+    /* Adiciona transição para as propriedades que podem mudar */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* BOLINHA PARA WEBKIT */
@@ -201,15 +202,17 @@ input[type="range"]::-webkit-slider-thumb {
     z-index: 2;
     margin-top: 2px;
     border: none;
-    transition: transform 0.3s; /* Transição para o movimento da bolinha */
+    /* Adiciona transição para a posição da bolinha */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Adicionado background-color para possível mudança */
 }
 
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
 input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
     border-radius: 10px; /* Metade da altura para ser oval */
-    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%); /* Gradiente para simular a cor de preenchimento */
-    transition: background 0.3s; /* Transição para a cor de preenchimento */
+    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%);
+    /* Adiciona transição para a propriedade background */
+    transition: background 0.3s ease;
 }
 
 /* BOLINHA PARA FIREFOX */
@@ -221,7 +224,8 @@ input[type="range"]::-moz-range-thumb {
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
-    transition: transform 0.3s; /* Transição para o movimento da bolinha */
+    /* Adiciona transição para a posição da bolinha */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Adicionado background-color para possível mudança */
 }
 
 /* TRILHA PARA FIREFOX */
@@ -230,7 +234,8 @@ input[type="range"]::-moz-range-track {
     border-radius: 10px; /* Metade da altura para ser oval */
     background-color: #3a3a3b; /* Cor de fundo similar ao checkbox não marcado */
     border: 1px solid #acacac; /* Borda similar ao checkbox não marcado */
-    transition: background-color 0.3s, border-color 0.3s; /* Transição para cores de fundo e borda */
+    /* Adiciona transição para as propriedades que podem mudar */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* LINHA LARANJA PARA FIREFOX */
@@ -238,7 +243,8 @@ input[type="range"]::-moz-range-progress {
     height: 20px;
     border-radius: 10px; /* Metade da altura para ser oval */
     background: #FF8C00; /* Cor de preenchimento similar ao checkbox marcado */
-    transition: background 0.3s; /* Transição para a cor de preenchimento */
+    /* Adiciona transição para a propriedade background */
+    transition: background 0.3s ease;
 }
 
 /* EFEITOS DE HOVER */
