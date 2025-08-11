@@ -98,7 +98,7 @@ document.addEventListener('mousemove', e => { if (isDragging) { let newX = Math.
 
 /* Dropdown */
 Object.assign(dropdownMenu.style, {
-    position: 'absolute', top: '100%', left: '0', width: '160px', backgroundColor: 'rgba(0,0,0,0.3)',
+    position: 'absolute', top: '100%', left: '0', width: '160px', backgroundColor: 'rgba(0,0,0,0.5)',
     borderRadius: '10px', color: 'white', fontSize: '13px', fontFamily: 'Monospace, sans-serif',
     display: 'none', flexDirection: 'column', zIndex: '1000', padding: '5px', cursor: 'default',
     userSelect: 'none', transition: 'transform 0.3s ease', backdropFilter: 'blur(2px)', WebkitBackdropFilter: 'blur(2px)'
