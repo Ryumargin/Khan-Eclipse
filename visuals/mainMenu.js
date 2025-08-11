@@ -104,14 +104,142 @@ Object.assign(dropdownMenu.style, {
     userSelect: 'none', transition: 'transform 0.3s ease', backdropFilter: 'blur(2px)', WebkitBackdropFilter: 'blur(2px)'
 });
 
+Object.assign(dropdownMenu.style, {
+    position: 'absolute', top: '100%', left: '0', width: '220px', // Aumentado a largura
+    backgroundColor: 'rgba(0,0,0,0.7)', // Mais transparente
+    borderRadius: '15px', // Mais arredondado
+    color: 'white', fontSize: '13px', fontFamily: 'Monospace, sans-serif',
+    display: 'none', flexDirection: 'column', zIndex: '1000', padding: '10px', // Aumentado o padding
+    cursor: 'default', userSelect: 'none', transition: 'transform 0.3s ease, background-color 0.3s ease', // Adicionado transição para background
+    backdropFilter: 'none'
+});
+
 dropdownMenu.innerHTML = `
     <style>
-        input[type="checkbox"] {appearance: none; width: 15px; height: 15px; background-color: #3a3a3b;
-        border: 1px solid #acacac; border-radius: 3px; margin-right: 5px; cursor: pointer;}
-        input[type="checkbox"]:checked {background-color: #FF8C00; border-color: #FF8C00;}
-        input[type="text"], input[type="number"], input[type="range"] {width: calc(100% - 10px); border: 1px solid #343434; 
-        color: white; accent-color: #FF8C00; background-color: #FF8C00; padding: 3px; border-radius: 3px; background: none;}
-        label {display: flex; align-items: center; color: #3a3a3b; padding-top: 3px;}
+        /* Animação RGB para o nome Khan Cheetus */
+        @keyframes rgbColorShift {
+            0% { color: rgb(255, 0, 0); }
+            16% { color: rgb(255, 255, 0); }
+            33% { color: rgb(0, 255, 0); }
+            50% { color: rgb(0, 255, 255); }
+            66% { color: rgb(0, 0, 255); }
+            83% { color: rgb(255, 0, 255); }
+            100% { color: rgb(255, 0, 0); }
+        }
+        #khanCheetusName {
+            animation: rgbColorShift 5s infinite linear;
+        }
+
+        /* Estilo de switch para checkboxes */
+        input[type="checkbox"] {
+            appearance: none;
+            position: relative;
+            width: 38px; /* Largura do switch */
+            height: 20px; /* Altura do switch */
+            background-color: #3a3a3b;
+            border: 1px solid #acacac;
+            border-radius: 10px; /* Metade da altura para ser oval */
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin-right: 10px; /* Espaçamento */
+        }
+        input[type="checkbox"]::before {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 16px; /* Tamanho do "slider" */
+            height: 16px; /* Tamanho do "slider" */
+            background-color: #fff;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #ffa500; /* Cor quando ativado */
+            border-color: #ffa500;
+        }
+        input[type="checkbox"]:checked::before {
+            transform: translateX(18px); /* Move o slider para a direita */
+        }
+
+        /* Estilo para input[type="text"], input[type="number"] */
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 10px);
+            border: 1px solid #ffa500;
+            color: white;
+            padding: 3px;
+            border-radius: 3px;
+            background: none; /* Fundo transparente */
+        }
+
+        /* NOVO ESTILO PARA A SEEKBAR (input[type="range"]) */
+        input[type="range"] {
+            -webkit-appearance: none; /* Remove a aparência padrão do navegador */
+            width: calc(100% - 10px); /* Ajusta a largura */
+            height: 8px; /* Altura da barra */
+            background: #3a3a3b; /* Cor de fundo da trilha (cinza escuro como o checkbox desativado) */
+            border-radius: 5px; /* Bordas arredondadas para a trilha */
+            outline: none; /* Remove o contorno ao focar */
+            transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+            margin-top: 5px; /* Espaçamento superior */
+            accent-color: #ffa500; /* Cor do preenchimento da barra (para navegadores que suportam) */
+        }
+
+        /* Estilo do "thumb" (o controle deslizante) para Webkit (Chrome, Safari) */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Remove a aparência padrão */
+            width: 20px; /* Largura do thumb */
+            height: 20px; /* Altura do thumb */
+            border-radius: 50%; /* Torna o thumb circular */
+            background: #ffa500; /* Cor laranja como o checkbox ativado */
+            cursor: grab; /* Cursor de arrastar */
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.7); /* Sombra para dar profundidade */
+            margin-top: -6px; /* Ajusta a posição vertical do thumb */
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transições suaves */
+            border: 1px solid #ffa500; /* Borda para combinar com o checkbox */
+        }
+
+        input[type="range"]::-webkit-slider-thumb:active {
+            cursor: grabbing; /* Cursor ao arrastar */
+            transform: scale(1.1); /* Pequeno aumento ao arrastar */
+        }
+
+        /* Estilo do "thumb" (o controle deslizante) para Firefox */
+        input[type="range"]::-moz-range-thumb {
+            width: 20px; /* Largura do thumb */
+            height: 20px; /* Altura do thumb */
+            border-radius: 50%; /* Torna o thumb circular */
+            background: #ffa500; /* Cor laranja como o checkbox ativado */
+            cursor: grab; /* Cursor de arrastar */
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.7); /* Sombra para dar profundidade */
+            border: 1px solid #ffa500; /* Borda para combinar com o checkbox */
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transições suaves */
+        }
+
+        input[type="range"]::-moz-range-thumb:active {
+            cursor: grabbing; /* Cursor ao arrastar */
+            transform: scale(1.1); /* Pequeno aumento ao arrastar */
+        }
+
+        /* Estilo da trilha preenchida (para navegadores que não suportam accent-color) */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #ffa500 var(--range-progress, 50%), #3a3a3b var(--range-progress, 50%));
+            border-radius: 5px;
+            height: 8px;
+        }
+        input[type="range"]::-moz-range-track {
+            background: #3a3a3b;
+            border-radius: 5px;
+            height: 8px;
+        }
+        input[type="range"]::-moz-range-progress {
+            background-color: #ffa500;
+            border-radius: 5px;
+            height: 8px;
+        }
+
+        label {display: flex; align-items: center; color: #ccc; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1);} /* Ajustado cor do texto e borda */
+        label:last-of-type { border-bottom: none; } /* Remove a borda do último item */
     </style>
 `;
 
