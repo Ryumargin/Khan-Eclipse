@@ -177,32 +177,39 @@ input[type="range"] {
     -webkit-appearance: none;
     width: calc(100% - 10px);
     height: 20px;
-    background: #FF8C00; /* Cor da parte não preenchida */
-    border-radius: 50px;
+    background-color: #3a3a3b; /* Cor de fundo similar ao checkbox não marcado */
+    border: 1px solid #acacac; /* Borda similar ao checkbox não marcado */
+    border-radius: 10px; /* Metade da altura para ser oval, como o checkbox */
     outline: none;
     margin-top: 5px;
     padding: 0;
-    overflow: hidden; /* Importante para a linha laranja não vazar */
+    overflow: hidden;
+    cursor: pointer; /* Cursor de ponteiro como o checkbox */
+    transition: background-color 0.3s, border-color 0.3s; /* Transição para cores de fundo e borda */
 }
+
 /* BOLINHA PARA WEBKIT */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #3a3a3b;
+    background-color: #fff; /* Cor da bolinha similar ao slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
     z-index: 2;
     margin-top: 2px;
     border: none;
+    transition: transform 0.3s; /* Transição para o movimento da bolinha */
 }
+
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
 input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
-    border-radius: 50px;
-    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #FF8C00 var(--range-progress), #FF8C00 100%);
+    border-radius: 10px; /* Metade da altura para ser oval */
+    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%); /* Gradiente para simular a cor de preenchimento */
+    transition: background 0.3s; /* Transição para a cor de preenchimento */
 }
 
 /* BOLINHA PARA FIREFOX */
@@ -210,23 +217,30 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #3a3a3b;
+    background-color: #fff; /* Cor da bolinha similar ao slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
+    transition: transform 0.3s; /* Transição para o movimento da bolinha */
 }
+
 /* TRILHA PARA FIREFOX */
 input[type="range"]::-moz-range-track {
     height: 20px;
-    border-radius: 50px;
-    background: #FF8C00;
+    border-radius: 10px; /* Metade da altura para ser oval */
+    background-color: #3a3a3b; /* Cor de fundo similar ao checkbox não marcado */
+    border: 1px solid #acacac; /* Borda similar ao checkbox não marcado */
+    transition: background-color 0.3s, border-color 0.3s; /* Transição para cores de fundo e borda */
 }
+
 /* LINHA LARANJA PARA FIREFOX */
 input[type="range"]::-moz-range-progress {
     height: 20px;
-    border-radius: 50px;
-    background: #FF8C00;
+    border-radius: 10px; /* Metade da altura para ser oval */
+    background: #FF8C00; /* Cor de preenchimento similar ao checkbox marcado */
+    transition: background 0.3s; /* Transição para a cor de preenchimento */
 }
+
 /* EFEITOS DE HOVER */
 input[type="range"]::-webkit-slider-thumb:hover,
 input[type="range"]::-moz-range-thumb:hover {
