@@ -116,19 +116,19 @@ Object.assign(dropdownMenu.style, {
 
 dropdownMenu.innerHTML = `
     <style>
-/* Animação RGB para o nome Khan Cheetus */
-@keyframes rgbColorShift {
-    0% { color: rgb(255, 0, 0); }
-    16% { color: rgb(255, 255, 0); }
-    33% { color: rgb(0, 255, 0); }
-    50% { color: rgb(0, 255, 255); }
-    66% { color: rgb(0, 0, 255); }
-    83% { color: rgb(255, 0, 255); }
-    100% { color: rgb(255, 0, 0); }
-}
-#khanCheetusName {
-    animation: rgbColorShift 5s infinite linear;
-}
+        /* Animação RGB para o nome Khan Cheetus */
+        @keyframes rgbColorShift {
+            0% { color: rgb(255, 0, 0); }
+            16% { color: rgb(255, 255, 0); }
+            33% { color: rgb(0, 255, 0); }
+            50% { color: rgb(0, 255, 255); }
+            66% { color: rgb(0, 0, 255); }
+            83% { color: rgb(255, 0, 255); }
+            100% { color: rgb(255, 0, 0); }
+        }
+        #khanCheetusName {
+            animation: rgbColorShift 5s infinite linear;
+        }
 
 /* ESTILO FINAL DA SEEKBAR COM LINHA LARANJA */
 input[type="range"] {
@@ -152,21 +152,23 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #FF8C00; /* A bolinha será laranja */
+    /* ALTERAÇÃO AQUI: Usar linear-gradient para simular o preenchimento laranja e a bolinha branca */
+    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%), #3a3a3b 100%);
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
     z-index: 2;
     margin-top: 2px;
     border: none;
-    transition: transform 0.3s, background-color 0.3s; /* Adicionado transição para background-color */
+    transition: transform 0.3s; /* Transição para o efeito de hover */
 }
 
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
+/* Esta regra é ajustada para não ter um background próprio, pois o preenchimento será feito pelo thumb */
 input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
     border-radius: 10px; /* Combinando com o border-radius do range */
-    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%), #3a3a3b 100%); /* Trilha preenchida em laranja, restante em cinza */
+    background: transparent; /* A trilha em si não terá background, o preenchimento vem do thumb */
 }
 
 /* BOLINHA PARA FIREFOX */
@@ -174,11 +176,11 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #FF8C00; /* A bolinha será laranja */
+    background-color: #3a3a3b; /* Cor da bolinha, combinando com o slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
-    transition: transform 0.3s, background-color 0.3s; /* Adicionado transição para background-color */
+    transition: transform 0.3s; /* Transição para o efeito de hover */
 }
 
 /* TRILHA PARA FIREFOX */
@@ -223,7 +225,7 @@ input[type="checkbox"]::before {
     left: 1px;
     width: 16px;
     height: 16px;
-    background-color: #fff;
+    background-color: #3a3a3b;
     border-radius: 50%;
     transition: transform 0.3s;
 }
@@ -248,7 +250,7 @@ input[type="text"], input[type="number"] {
 label {
     display: flex;
     align-items: center;
-    color: #ccc;
+    color: #3a3a3b;
     padding-top: 5px;
     padding-bottom: 5px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -256,6 +258,7 @@ label {
 label:last-of-type {
     border-bottom: none;
 }
+
     </style>
 `;
 
@@ -289,22 +292,6 @@ handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
-// --- INÍCIO DO CÓDIGO A SER ADICIONADO ---
-// SISTEMA DE ATUALIZAÇÃO DA LINHA LARANJA
-document.addEventListener('DOMContentLoaded', function() {
-    const updateRangeProgress = (range) => {
-        const value = (range.value - range.min) / (range.max - range.min) * 100;
-        range.style.setProperty('--range-progress', value + '%');
-    };
-    const rangeInput = document.getElementById('autoAnswerDelay'); // O ID do seu input range
-    if (rangeInput) {
-        // Inicializa
-        updateRangeProgress(rangeInput);
-        
-        // Atualiza ao mover
-        rangeInput.addEventListener('input', (e) => updateRangeProgress(e.target));
-    }
-});
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
