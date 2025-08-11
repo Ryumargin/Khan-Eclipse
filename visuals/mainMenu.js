@@ -292,6 +292,22 @@ handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
+// --- INÍCIO DO CÓDIGO A SER ADICIONADO ---
+// SISTEMA DE ATUALIZAÇÃO DA LINHA LARANJA
+document.addEventListener('DOMContentLoaded', function() {
+    const updateRangeProgress = (range) => {
+        const value = (range.value - range.min) / (range.max - range.min) * 100;
+        range.style.setProperty('--range-progress', value + '%');
+    };
+    const rangeInput = document.getElementById('autoAnswerDelay'); // O ID do seu input range
+    if (rangeInput) {
+        // Inicializa
+        updateRangeProgress(rangeInput);
+        
+        // Atualiza ao mover
+        rangeInput.addEventListener('input', (e) => updateRangeProgress(e.target));
+    }
+});
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
