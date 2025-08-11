@@ -84,9 +84,7 @@ Object.assign(watermark.style, {
 
 if (device.mobile) watermark.style.left = '55%'
 
-watermark.innerHTML = `
-    <span style="text-shadow: 0 0 2px #ffffff;">PChan</span> <!-- Sombra ajustada -->
-`;
+watermark.innerHTML = `PChan`; // Texto sem efeitos
 
 document.body.appendChild(watermark);
 
