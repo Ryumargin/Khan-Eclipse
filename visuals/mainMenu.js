@@ -85,7 +85,7 @@ Object.assign(watermark.style, {
 if (device.mobile) watermark.style.left = '55%'
 
 watermark.innerHTML = `
-    <span style="text-shadow: -1px 0.5px 0 #ffa435ff, -2px 0px 0 #FF8C00;">PChan</span> 
+    <span style="text-shadow: -1px 0.5px 0 #ffa435ff, -2px 0px 0 #FF8C00;">Menu Pchan</span> 
     <span style="color:gray; padding-left:2px; font-family: Arial, sans-serif; font-size:10px">${ver}</span>
 `;
 
