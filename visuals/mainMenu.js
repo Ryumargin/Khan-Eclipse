@@ -172,34 +172,37 @@ dropdownMenu.innerHTML = `
             background: none; /* Fundo transparente */
         }
 
-/* ESTILO REVISADO DA SEEKBAR */
+/* ESTILO FINAL DA SEEKBAR COM LINHA LARANJA */
 input[type="range"] {
     -webkit-appearance: none;
     width: calc(100% - 10px);
     height: 20px;
-    background: #3a3a3b;
+    background: #3a3a3b; /* Cor da parte não preenchida */
     border-radius: 50px;
     outline: none;
-    transition: background-color 0.3s ease;
     margin-top: 5px;
     padding: 0;
+    overflow: hidden; /* Importante para a linha laranja não vazar */
 }
 /* BOLINHA PARA WEBKIT */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 16px; /* Reduzido de 18px */
-    height: 16px; /* Reduzido de 18px */
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: #222; /* Cor alterada para #222 */
+    background: #222;
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    margin-top: 2px; /* Ajuste fino de posicionamento */
-    transition: all 0.2s ease;
+    position: relative;
+    z-index: 2;
+    margin-top: 2px;
     border: none;
 }
-input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+/* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 20px;
+    border-radius: 50px;
+    background: linear-gradient(to right, #ffa500 0%, #ffa500 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%);
 }
 
 /* BOLINHA PARA FIREFOX */
@@ -211,27 +214,24 @@ input[type="range"]::-moz-range-thumb {
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
-    transition: all 0.2s ease;
 }
+/* TRILHA PARA FIREFOX */
+input[type="range"]::-moz-range-track {
+    height: 20px;
+    border-radius: 50px;
+    background: #3a3a3b;
+}
+/* LINHA LARANJA PARA FIREFOX */
+input[type="range"]::-moz-range-progress {
+    height: 20px;
+    border-radius: 50px;
+    background: #ffa500;
+}
+/* EFEITOS DE HOVER */
+input[type="range"]::-webkit-slider-thumb:hover,
 input[type="range"]::-moz-range-thumb:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-}
-/* PARTE PREENCHIDA DA BARRA */
-input[type="range"]::-webkit-slider-runnable-track {
-    background: linear-gradient(to right, #ffa500 var(--range-progress), #3a3a3b 0);
-    border-radius: 50px;
-    height: 20px;
-}
-input[type="range"]::-moz-range-track {
-    background: #3a3a3b;
-    border-radius: 50px;
-    height: 20px;
-}
-input[type="range"]::-moz-range-progress {
-    background-color: #ffa500;
-    border-radius: 50px;
-    height: 20px;
 }
 
         label {display: flex; align-items: center; color: #ccc; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1);} /* Ajustado cor do texto e borda */
@@ -270,23 +270,21 @@ handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
 // --- INÍCIO DO CÓDIGO A SER ADICIONADO ---
-// ATUALIZADOR DA BARRA DE PROGRESSO
+// SISTEMA DE ATUALIZAÇÃO DA LINHA LARANJA
 document.addEventListener('DOMContentLoaded', function() {
+    const updateRangeProgress = (range) => {
+        const value = (range.value - range.min) / (range.max - range.min) * 100;
+        range.style.setProperty('--range-progress', value + '%');
+    };
     const rangeInput = document.getElementById('autoAnswerDelay'); // O ID do seu input range
     if (rangeInput) {
-        // Atualiza ao mover
-        rangeInput.addEventListener('input', function(e) {
-            updateRangeProgress(e.target);
-        });
-        
-        // Atualiza ao carregar
+        // Inicializa
         updateRangeProgress(rangeInput);
+        
+        // Atualiza ao mover
+        rangeInput.addEventListener('input', (e) => updateRangeProgress(e.target));
     }
 });
-function updateRangeProgress(range) {
-    const value = (range.value - range.min) / (range.max - range.min) * 100;
-    range.style.setProperty('--range-progress', value + '%');
-}
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
