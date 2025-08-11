@@ -225,7 +225,7 @@ input[type="checkbox"]::before {
     left: 1px;
     width: 16px;
     height: 16px;
-    background-color: #3a3a3b;
+    background-color: #fff;
     border-radius: 50%;
     transition: transform 0.3s;
 }
@@ -250,7 +250,7 @@ input[type="text"], input[type="number"] {
 label {
     display: flex;
     align-items: center;
-    color: #3a3a3b;
+    color: #ccc;
     padding-top: 5px;
     padding-bottom: 5px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
