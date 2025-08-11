@@ -130,62 +130,20 @@ dropdownMenu.innerHTML = `
             animation: rgbColorShift 5s infinite linear;
         }
 
-        /* Estilo de switch para checkboxes */
-        input[type="checkbox"] {
-            appearance: none;
-            position: relative;
-            width: 38px; /* Largura do switch */
-            height: 20px; /* Altura do switch */
-            background-color: #3a3a3b;
-            border: 1px solid #acacac;
-            border-radius: 10px; /* Metade da altura para ser oval */
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-            margin-right: 10px; /* Espaçamento */
-        }
-        input[type="checkbox"]::before {
-            content: '';
-            position: absolute;
-            top: 1px;
-            left: 1px;
-            width: 16px; /* Tamanho do "slider" */
-            height: 16px; /* Tamanho do "slider" */
-            background-color: #fff;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-        input[type="checkbox"]:checked {
-            background-color: #FF8C00; /* Cor quando ativado */
-            border-color: #FF8C00;
-        }
-        input[type="checkbox"]:checked::before {
-            transform: translateX(18px); /* Move o slider para a direita */
-        }
-
-        /* Estilo para input[type="text"], input[type="number"] */
-        input[type="text"], input[type="number"] {
-            width: calc(100% - 10px);
-            border: 1px solid #FF8C00;
-            color: white;
-            padding: 3px;
-            border-radius: 3px;
-            background: none; /* Fundo transparente */
-        }
-
 /* ESTILO FINAL DA SEEKBAR COM LINHA LARANJA */
 input[type="range"] {
     -webkit-appearance: none;
     width: calc(100% - 10px);
     height: 20px;
-    background-color: #3a3a3b; /* Cor de fundo similar ao checkbox não marcado */
-    border: 1px solid #acacac; /* Borda similar ao checkbox não marcado */
-    border-radius: 10px; /* Metade da altura para ser oval, como o checkbox */
+    background-color: #3a3a3b; /* Cor de fundo da trilha, combinando com o checkbox */
+    border: 1px solid #acacac; /* Borda, combinando com o checkbox */
+    border-radius: 10px; /* Metade da altura para ser oval, combinando com o checkbox */
     outline: none;
     margin-top: 5px;
     padding: 0;
     overflow: hidden;
-    cursor: pointer; /* Cursor de ponteiro como o checkbox */
-    transition: background-color 0.3s, border-color 0.3s; /* Transição para cores de fundo e borda */
+    cursor: pointer; /* Cursor de ponteiro, combinando com o checkbox */
+    transition: background-color 0.3s, border-color 0.3s; /* Transição para suavizar mudanças */
 }
 
 /* BOLINHA PARA WEBKIT */
@@ -194,22 +152,24 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #fff; /* Cor da bolinha similar ao slider do checkbox */
+    background-color: #fff; /* Cor da bolinha, combinando com o slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
     z-index: 2;
     margin-top: 2px;
     border: none;
-    transition: transform 0.3s; /* Transição para o movimento da bolinha */
+    transition: transform 0.3s; /* Transição para o efeito de hover */
+    /* Adiciona uma "trilha" laranja antes da bolinha para simular o preenchimento */
+    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress, 0%), #fff var(--range-progress, 0%), #fff 100%);
 }
 
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
+/* Esta regra é ajustada para não ter um background próprio, pois o preenchimento será feito pelo thumb */
 input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
-    border-radius: 10px; /* Metade da altura para ser oval */
-    background: linear-gradient(to right, #FF8C00 0%, #FF8C00 var(--range-progress), #3a3a3b var(--range-progress), #3a3a3b 100%); /* Gradiente para simular a cor de preenchimento */
-    transition: background 0.3s; /* Transição para a cor de preenchimento */
+    border-radius: 10px; /* Combinando com o border-radius do range */
+    background: transparent; /* A trilha em si não terá background, o preenchimento vem do thumb */
 }
 
 /* BOLINHA PARA FIREFOX */
@@ -217,28 +177,26 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #fff; /* Cor da bolinha similar ao slider do checkbox */
+    background-color: #fff; /* Cor da bolinha, combinando com o slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
-    transition: transform 0.3s; /* Transição para o movimento da bolinha */
+    transition: transform 0.3s; /* Transição para o efeito de hover */
 }
 
 /* TRILHA PARA FIREFOX */
 input[type="range"]::-moz-range-track {
     height: 20px;
-    border-radius: 10px; /* Metade da altura para ser oval */
-    background-color: #3a3a3b; /* Cor de fundo similar ao checkbox não marcado */
-    border: 1px solid #acacac; /* Borda similar ao checkbox não marcado */
-    transition: background-color 0.3s, border-color 0.3s; /* Transição para cores de fundo e borda */
+    border-radius: 10px; /* Combinando com o border-radius do range */
+    background-color: #3a3a3b; /* Cor de fundo da trilha, combinando com o checkbox */
+    border: 1px solid #acacac; /* Borda, combinando com o checkbox */
 }
 
 /* LINHA LARANJA PARA FIREFOX */
 input[type="range"]::-moz-range-progress {
     height: 20px;
-    border-radius: 10px; /* Metade da altura para ser oval */
-    background: #FF8C00; /* Cor de preenchimento similar ao checkbox marcado */
-    transition: background 0.3s; /* Transição para a cor de preenchimento */
+    border-radius: 10px; /* Combinando com o border-radius do range */
+    background: #FF8C00; /* Cor de preenchimento, combinando com o checkbox ativado */
 }
 
 /* EFEITOS DE HOVER */
@@ -246,6 +204,60 @@ input[type="range"]::-webkit-slider-thumb:hover,
 input[type="range"]::-moz-range-thumb:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+/* Estilo de switch para checkboxes (mantido como está, apenas para referência) */
+input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 38px;
+    height: 20px;
+    background-color: #3a3a3b;
+    border: 1px solid #acacac;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-right: 10px;
+}
+input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+input[type="checkbox"]:checked {
+    background-color: #FF8C00;
+    border-color: #FF8C00;
+}
+input[type="checkbox"]:checked::before {
+    transform: translateX(18px);
+}
+
+/* Estilo para input[type="text"], input[type="number"] (mantido como está, apenas para referência) */
+input[type="text"], input[type="number"] {
+    width: calc(100% - 10px);
+    border: 1px solid #FF8C00; /* Borda laranja */
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+    background: none;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    color: #ccc;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+label:last-of-type {
+    border-bottom: none;
 }
 
         label {display: flex; align-items: center; color: #ccc; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1);} /* Ajustado cor do texto e borda */
