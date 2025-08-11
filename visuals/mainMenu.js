@@ -65,12 +65,9 @@ Object.assign(watermark.style, {
     position: 'fixed', 
     top: '0', 
     left: '85%', 
-    width: '50px', // largura do quadrado aumentada
-    height: '50px', // altura do quadrado aumentada
+    width: '50px', // largura do quadrado
+    height: '50px', // altura do quadrado
     backgroundColor: 'RGB(0,0,0,0.5)',
-    color: 'white', 
-    fontSize: '12px', // tamanho do texto
-    fontFamily: 'MuseoSans, sans-serif', 
     display: 'flex', 
     justifyContent: 'center', // centraliza o conteúdo
     alignItems: 'center', // centraliza o conteúdo
