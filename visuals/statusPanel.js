@@ -2,7 +2,7 @@ Object.assign(statsPanel.style, {
     position: 'fixed', top: '95%', left: '20px', width: '250px', height: '30px',
     backgroundColor: 'rgb(0,0,0,0.2)', color: 'white', fontSize: '13px', fontFamily: 'Arial, sans-serif',
     display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'default', borderRadius: '10px',
-    userSelect: 'none', zIndex: '1000', transition: 'transform 0.3s', backdropFilter: 'blur(1.5px)', WebkitBackdropFilter: 'blur(1.5px)'
+    userSelect: 'none', zIndex: '1000', transition: 'transform 0.3s', backdropFilter: 'blur(2px)', WebkitBackdropFilter: 'blur(2px)'
 });
 
 const getPing = async () => { if(window.disablePing) return ':( '; try { const t = performance.now(); await fetch('https://pt.khanacademy.org/', { method: 'HEAD' }); return Math.round(performance.now() - t); } catch { return 'Error'; } };
