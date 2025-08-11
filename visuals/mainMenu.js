@@ -173,70 +173,41 @@ dropdownMenu.innerHTML = `
         }
 
         /* NOVO ESTILO PARA A SEEKBAR (input[type="range"]) */
-        input[type="range"] {
-            -webkit-appearance: none; /* Remove a aparência padrão do navegador */
-            width: calc(100% - 10px); /* Ajusta a largura */
-            height: 8px; /* Altura da barra */
-            background: #3a3a3b; /* Cor de fundo da trilha (cinza escuro como o checkbox desativado) */
-            border-radius: 5px; /* Bordas arredondadas para a trilha */
-            outline: none; /* Remove o contorno ao focar */
-            transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
-            margin-top: 5px; /* Espaçamento superior */
-            accent-color: #ffa500; /* Cor do preenchimento da barra (para navegadores que suportam) */
         }
-
-        /* Estilo do "thumb" (o controle deslizante) para Webkit (Chrome, Safari) */
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none; /* Remove a aparência padrão */
-            width: 20px; /* Largura do thumb */
-            height: 20px; /* Altura do thumb */
-            border-radius: 50%; /* Torna o thumb circular */
-            background: #ffa500; /* Cor laranja como o checkbox ativado */
-            cursor: grab; /* Cursor de arrastar */
-            box-shadow: 0 0 5px rgba(255, 165, 0, 0.7); /* Sombra para dar profundidade */
-            margin-top: -6px; /* Ajusta a posição vertical do thumb */
-            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transições suaves */
-            border: 1px solid #ffa500; /* Borda para combinar com o checkbox */
-        }
-
-        input[type="range"]::-webkit-slider-thumb:active {
-            cursor: grabbing; /* Cursor ao arrastar */
-            transform: scale(1.1); /* Pequeno aumento ao arrastar */
-        }
-
-        /* Estilo do "thumb" (o controle deslizante) para Firefox */
-        input[type="range"]::-moz-range-thumb {
-            width: 20px; /* Largura do thumb */
-            height: 20px; /* Altura do thumb */
-            border-radius: 50%; /* Torna o thumb circular */
-            background: #ffa500; /* Cor laranja como o checkbox ativado */
-            cursor: grab; /* Cursor de arrastar */
-            box-shadow: 0 0 5px rgba(255, 165, 0, 0.7); /* Sombra para dar profundidade */
-            border: 1px solid #ffa500; /* Borda para combinar com o checkbox */
-            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transições suaves */
-        }
-
-        input[type="range"]::-moz-range-thumb:active {
-            cursor: grabbing; /* Cursor ao arrastar */
-            transform: scale(1.1); /* Pequeno aumento ao arrastar */
-        }
-
-        /* Estilo da trilha preenchida (para navegadores que não suportam accent-color) */
-        input[type="range"]::-webkit-slider-runnable-track {
-            background: linear-gradient(to right, #ffa500 var(--range-progress, 50%), #3a3a3b var(--range-progress, 50%));
-            border-radius: 5px;
-            height: 8px;
-        }
-        input[type="range"]::-moz-range-track {
-            background: #3a3a3b;
-            border-radius: 5px;
-            height: 8px;
-        }
-        input[type="range"]::-moz-range-progress {
-            background-color: #ffa500;
-            border-radius: 5px;
-            height: 8px;
-        }
+/* Estilo do "thumb" (o controle deslizante) para Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 20px; /* Largura do thumb */
+    height: 20px; /* Altura do thumb */
+    border-radius: 50%; /* Torna o thumb circular */
+    background: #fff; /* Cor branca como o slider do checkbox */
+    cursor: grab; /* Cursor de arrastar */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
+    border: 1px solid #acacac; /* Borda similar ao checkbox desativado */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transições suaves */
+}
+input[type="range"]::-moz-range-thumb:active {
+    cursor: grabbing; /* Cursor ao arrastar */
+    transform: scale(1.1); /* Pequeno aumento ao arrastar */
+}
+/* Estilo da trilha preenchida (para navegadores que não suportam accent-color) */
+/* Usamos background-image para simular o preenchimento com a cor laranja */
+input[type="range"]::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #ffa500 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%));
+    border-radius: 5px;
+    height: 8px;
+    border: 1px solid #acacac; /* Borda similar ao checkbox desativado */
+}
+input[type="range"]::-moz-range-track {
+    background: #3a3a3b;
+    border-radius: 5px;
+    height: 8px;
+    border: 1px solid #acacac; /* Borda similar ao checkbox desativado */
+}
+input[type="range"]::-moz-range-progress {
+    background-color: #ffa500;
+    border-radius: 5px;
+    height: 8px;
+}
 
         label {display: flex; align-items: center; color: #ccc; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1);} /* Ajustado cor do texto e borda */
         label:last-of-type { border-bottom: none; } /* Remove a borda do último item */
