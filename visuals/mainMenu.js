@@ -60,59 +60,53 @@ function handleInput(ids, callback = null) {
     });
 }
 
-// Função para substituir a logo do Khan Academy pela lua
-function replaceKhanLogoWithMoon() {
-    // Seleciona o elemento da logo do Khan Academy
-    const khanLogo = document.querySelector('svg._1rt6g9t'); // Ajuste o seletor conforme necessário
+// ... (código existente do mainMenu.js) ...
 
-    if (khanLogo) {
-        // Remove a logo antiga
-        khanLogo.parentNode.removeChild(khanLogo);
+// Adicione esta função em algum lugar no mainMenu.js, por exemplo, antes de setupMenu()
+function updateLogoText() {
+    // Encontra o link do logo principal
+    const headerLogoLink = document.querySelector('a[data-testid="header-logo"]');
+    if (headerLogoLink) {
+        // Altera o aria-label para acessibilidade
+        headerLogoLink.setAttribute('aria-label', 'Khan ⌇ Eclipse');
+    }
 
-        // Cria um novo elemento <i> para a lua
-        const moonIcon = document.createElement('i');
-        moonIcon.className = 'fas fa-moon moon-light';
-        moonIcon.style.fontSize = '27px'; // Ajuste o tamanho para caber no espaço do logo
-        moonIcon.style.color = '#a073ff'; // Cor roxa
-        moonIcon.style.filter = 'drop-shadow(0 0 8px rgba(160, 115, 255, 0.8)) drop-shadow(0 0 15px rgba(160, 115, 255, 0.6))';
-        moonIcon.style.position = 'relative'; // Use 'relative' para que o ícone fique no fluxo do layout
-        moonIcon.style.display = 'inline-block'; // Garante que o ícone seja exibido corretamente
-
-        // Adiciona o ícone da lua ao contêiner da logo
-        const logoContainer = document.querySelector('.logo-container'); // Ajuste o seletor para o contêiner correto
-        if (logoContainer) {
-            logoContainer.appendChild(moonIcon);
-        } else {
-            console.error('Contêiner da logo não encontrado.');
+    // Procura por elementos de texto que contenham "Khan Academy" no cabeçalho
+    // Isso pode variar dependendo da estrutura HTML exata do Khan Academy
+    const headerTextElements = document.querySelectorAll('h1, h2, span, a'); // Ajuste os seletores conforme necessário
+    headerTextElements.forEach(element => {
+        // Verifica se o texto do elemento contém "Khan Academy" ou algo similar
+        // e não é o SVG em si
+        if (element.textContent.includes('Khan Academy') && !element.querySelector('svg')) {
+            element.textContent = 'Khan ⌇ Eclipse';
         }
+        // Se houver um elemento específico para o nome da marca, como um <span> dentro do <a> do logo
+        // você pode precisar de um seletor mais específico. Exemplo:
+        // if (element.matches('a[data-testid="header-logo"] span')) {
+        //     element.textContent = 'Khan ⌇ Eclipse';
+        // }
+    });
 
-        // Adiciona o CSS necessário para o ícone da lua
-        if (!document.getElementById('moonLogoStyle')) {
-            const styleElement = document.createElement('style');
-            styleElement.id = 'moonLogoStyle';
-            styleElement.textContent = `
-                .moon-light {
-                    font-size: 27px; /* Tamanho ajustado */
-                    color: #a073ff; /* Cor roxa */
-                    filter: drop-shadow(0 0 8px rgba(160, 115, 255, 0.8))
-                            drop-shadow(0 0 15px rgba(160, 115, 255, 0.6));
-                }
-            `;
-            document.head.appendChild(styleElement);
-        }
-
-        // Garante que o Font Awesome esteja carregado
-        if (!document.querySelector('link[href*="font-awesome"]')) {
-            const fontAwesomeLink = document.createElement('link');
-            fontAwesomeLink.rel = 'stylesheet';
-            fontAwesomeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
-            document.head.appendChild(fontAwesomeLink);
-        }
+    // Se o texto "Khan Academy" for parte de um elemento SVG <text>, você precisaria de uma abordagem diferente.
+    // Exemplo (se houver um elemento <text> dentro do SVG com o nome):
+    const svgTextElement = document.querySelector('svg._1rt6g9t text');
+    if (svgTextElement) {
+        svgTextElement.textContent = 'Khan ⌇ Eclipse';
     }
 }
 
-// Chama a função para substituir a logo
-replaceKhanLogoWithMoon();
+// ... (código existente do mainMenu.js) ...
+
+// Chame a função updateLogoText após o carregamento inicial e sempre que o DOM mudar
+// Você pode adicionar isso no plppdo.on('domChanged') ou em um setInterval se o elemento for carregado dinamicamente
+plppdo.on('domChanged', () => {
+    updateLogoText();
+});
+
+// Chame também uma vez na inicialização, caso o elemento já esteja presente
+document.addEventListener('DOMContentLoaded', updateLogoText);
+
+// ... (restante do código do mainMenu.js) ...
 
 /* Watermark */
 Object.assign(watermark.style, {
