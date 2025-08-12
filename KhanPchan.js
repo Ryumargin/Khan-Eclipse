@@ -35,7 +35,6 @@ window.features = {
     repeatQuestion: false,
     minuteFarmer: false,
     rgbLogo: false
-    moonLogo: false 
 };
 window.featureConfigs = {
     autoAnswerDelay: 3,
@@ -204,6 +203,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
 
 
 
