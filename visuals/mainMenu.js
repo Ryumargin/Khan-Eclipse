@@ -114,7 +114,7 @@ Object.assign(dropdownMenu.style, {
 
 dropdownMenu.innerHTML = `
     <style>
-        /* Animação RGB para o nome Khan Cheetus */
+        /* Animação RGB para o nome Khanpchan */
         @keyframes rgbColorShift {
             0% { color: rgb(255, 0, 0); }
             16% { color: rgb(255, 255, 0); }
@@ -124,7 +124,7 @@ dropdownMenu.innerHTML = `
             83% { color: rgb(255, 0, 255); }
             100% { color: rgb(255, 0, 0); }
         }
-        #khanCheetusName {
+        #khanpchanName {
             animation: rgbColorShift 5s infinite linear;
         }
 
@@ -150,8 +150,8 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    /* ALTERAÇÃO AQUI: Usar linear-gradient para simular o preenchimento laranja e a bolinha branca */
-    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%), #fff 100%);
+    /* ALTERAÇÃO AQUI: Remover a cor branca e usar #3a3a3b */
+    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #3a3a3b var(--range-progress, 0%), #3a3a3b 100%);
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
@@ -162,7 +162,6 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /* TRILHA PREENCHIDA (LINHA LARANJA) PARA WEBKIT */
-/* Esta regra é ajustada para não ter um background próprio, pois o preenchimento será feito pelo thumb */
 input[type="range"]::-webkit-slider-runnable-track {
     height: 20px;
     border-radius: 10px; /* Combinando com o border-radius do range */
@@ -256,7 +255,6 @@ label {
 label:last-of-type {
     border-bottom: none;
 }
-
     </style>
 `;
 
