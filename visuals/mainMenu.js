@@ -60,6 +60,58 @@ function handleInput(ids, callback = null) {
     });
 }
 
+// Função para substituir a logo do Khan Academy pela lua
+function replaceKhanLogoWithMoon() {
+    // Seleciona o elemento da logo do Khan Academy
+    const khanLogo = document.querySelector('svg._1rt6g9t'); // Ajuste o seletor conforme necessário
+
+    if (khanLogo) {
+        // Remove a logo antiga
+        khanLogo.parentNode.removeChild(khanLogo);
+
+        // Cria um novo elemento <i> para a lua
+        const moonIcon = document.createElement('i');
+        moonIcon.className = 'fas fa-moon moon-light';
+        moonIcon.style.fontSize = '27px'; // Ajuste o tamanho para caber no espaço do logo
+        moonIcon.style.color = '#a073ff'; // Cor roxa
+        moonIcon.style.filter = 'drop-shadow(0 0 8px rgba(160, 115, 255, 0.8)) drop-shadow(0 0 15px rgba(160, 115, 255, 0.6))';
+        moonIcon.style.position = 'absolute'; // Posicionamento absoluto para centralizar
+        moonIcon.style.top = '50%';
+        moonIcon.style.left = '50%';
+        moonIcon.style.transform = 'translate(-50%, -50%)'; // Centraliza o ícone
+
+        // Adiciona o ícone da lua ao contêiner da logo
+        const logoContainer = document.querySelector('.logo-container'); // Ajuste o seletor para o contêiner correto
+        logoContainer.appendChild(moonIcon);
+
+        // Adiciona o CSS necessário para o ícone da lua
+        if (!document.getElementById('moonLogoStyle')) {
+            const styleElement = document.createElement('style');
+            styleElement.id = 'moonLogoStyle';
+            styleElement.textContent = `
+                .moon-light {
+                    font-size: 27px; /* Tamanho ajustado */
+                    color: #a073ff; /* Cor roxa */
+                    filter: drop-shadow(0 0 8px rgba(160, 115, 255, 0.8))
+                            drop-shadow(0 0 15px rgba(160, 115, 255, 0.6));
+                }
+            `;
+            document.head.appendChild(styleElement);
+        }
+
+        // Garante que o Font Awesome esteja carregado
+        if (!document.querySelector('link[href*="font-awesome"]')) {
+            const fontAwesomeLink = document.createElement('link');
+            fontAwesomeLink.rel = 'stylesheet';
+            fontAwesomeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+            document.head.appendChild(fontAwesomeLink);
+        }
+    }
+}
+
+// Chama a função para substituir a logo
+replaceKhanLogoWithMoon();
+
 /* Watermark */
 Object.assign(watermark.style, {
     position: 'fixed', 
