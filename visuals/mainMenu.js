@@ -65,8 +65,8 @@ Object.assign(watermark.style, {
     position: 'fixed', 
     top: '0', 
     left: '85%', 
-    width: '60px', // largura do quadrado aumentada
-    height: '60px', // altura do quadrado aumentada
+    width: '55px', // largura do quadrado aumentada
+    height: '55px', // altura do quadrado aumentada
     backgroundColor: 'RGB(0,0,0,0.5)',
     display: 'flex', 
     justifyContent: 'center', // centraliza o conteúdo
