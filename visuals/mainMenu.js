@@ -75,14 +75,16 @@ function replaceKhanLogoWithMoon() {
         moonIcon.style.fontSize = '27px'; // Ajuste o tamanho para caber no espaço do logo
         moonIcon.style.color = '#a073ff'; // Cor roxa
         moonIcon.style.filter = 'drop-shadow(0 0 8px rgba(160, 115, 255, 0.8)) drop-shadow(0 0 15px rgba(160, 115, 255, 0.6))';
-        moonIcon.style.position = 'absolute'; // Posicionamento absoluto para centralizar
-        moonIcon.style.top = '50%';
-        moonIcon.style.left = '50%';
-        moonIcon.style.transform = 'translate(-50%, -50%)'; // Centraliza o ícone
+        moonIcon.style.position = 'relative'; // Use 'relative' para que o ícone fique no fluxo do layout
+        moonIcon.style.display = 'inline-block'; // Garante que o ícone seja exibido corretamente
 
         // Adiciona o ícone da lua ao contêiner da logo
         const logoContainer = document.querySelector('.logo-container'); // Ajuste o seletor para o contêiner correto
-        logoContainer.appendChild(moonIcon);
+        if (logoContainer) {
+            logoContainer.appendChild(moonIcon);
+        } else {
+            console.error('Contêiner da logo não encontrado.');
+        }
 
         // Adiciona o CSS necessário para o ícone da lua
         if (!document.getElementById('moonLogoStyle')) {
