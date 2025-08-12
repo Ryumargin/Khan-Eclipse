@@ -150,8 +150,8 @@ input[type="range"]::-webkit-slider-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    /* ALTERAÇÃO AQUI: Remover a cor branca e usar #ffffff1a */
-    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #ffffff1a var(--range-progress, 0%), #ffffff1a 100%);
+    /* ALTERAÇÃO AQUI: Remover a cor branca e usar #181a1b */
+    background: linear-gradient(to right, #FF8C00 var(--range-progress, 0%), #FF8C00 var(--range-progress, 0%), #181a1b var(--range-progress, 0%), #181a1b 100%);
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     position: relative;
@@ -173,7 +173,7 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #ffffff1a; /* Cor da bolinha, combinando com o slider do checkbox */
+    background-color: #181a1b; /* Cor da bolinha, combinando com o slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
