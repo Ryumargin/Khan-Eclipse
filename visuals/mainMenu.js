@@ -272,6 +272,7 @@ let featuresList = [
     { name: 'customBanner', type: 'checkbox', variable: 'features.customBanner', labeled: true, label: 'Custom Banner' },
     { name: 'rgbLogo', type: 'checkbox', variable: 'features.rgbLogo', labeled: true, label: 'RGB Logo' },
     { name: 'darkMode', type: 'checkbox', variable: 'features.darkMode', attributes: 'checked', labeled: true, label: 'Dark Mode' },
+    { name: 'bgImageMode', type: 'checkbox', variable: 'features.bgImageMode', labeled: true, label: 'Imagem de Fundo' },
     { name: 'onekoJs', type: 'checkbox', variable: 'features.onekoJs', labeled: true, label: 'onekoJs' },
     { name: 'Custom Username', type: 'nonInput' },
     { name: 'customName', type: 'text', variable: 'featureConfigs.customUsername', attributes: 'autocomplete="off"' },
@@ -288,6 +289,15 @@ handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
+handleInput('bgImageMode', checked => {
+    const { toggleBackgroundImageMode } = require('./functions/backgroundImageMode');
+    toggleBackgroundImageMode(checked);
+});
+// Inicialize quando o DOM carregar
+document.addEventListener('DOMContentLoaded', () => {
+    const { setupBackgroundImageMode } = require('./functions/backgroundImageMode');
+    setupBackgroundImageMode();
+});
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
