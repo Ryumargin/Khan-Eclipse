@@ -291,14 +291,20 @@ handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
-// AQUI VOCÊ PODE INSERIR O NOVO CÓDIGO PARA O LOGO E TEXTO
+// Dentro de mainMenu.js, ou em um novo arquivo carregado após o DOM estar pronto
 plppdo.on('domChanged', () => {
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink) {
         // 1. Modificar o aria-label
         headerLogoLink.setAttribute('aria-label', 'Khan ⌇ Eclipse');
 
-        // 2. Adicionar o texto "⌇ Eclipse" ao lado do logo
+        // 2. Remover o logo antigo (SVG)
+        const oldLogoSvg = headerLogoLink.querySelector('svg._1rt6g9t');
+        if (oldLogoSvg) {
+            oldLogoSvg.remove(); // Remove o SVG antigo
+        }
+
+        // 3. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
         // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
             const khanText = document.createElement('span');
@@ -310,7 +316,7 @@ plppdo.on('domChanged', () => {
 
             const eclipseText = document.createElement('span');
             eclipseText.textContent = '⌇ Eclipse';
-            eclipseText.style.color = '#FF8C00'; // Cor laranja para "⌇ Eclipse"
+            eclipseText.style.color = 'white'; // Cor branca para "⌇ Eclipse"
             eclipseText.style.fontSize = '20px'; // Ajuste o tamanho da fonte conforme necessário
             eclipseText.style.fontWeight = 'bold';
             eclipseText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
@@ -325,13 +331,10 @@ plppdo.on('domChanged', () => {
             textContainer.appendChild(eclipseText);
 
             // Inserir o texto antes do SVG do logo
-            // Se você quiser o texto à direita do logo, mude para:
-            // headerLogoLink.appendChild(textContainer);
             headerLogoLink.insertBefore(textContainer, headerLogoLink.querySelector('svg._1rt6g9t'));
         }
     }
 });
-// FIM DO NOVO CÓDIGO
 
 watermark.addEventListener('mouseenter', () => { dropdownMenu.style.display = 'flex'; playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/3kd01iyj.wav'); } );
 watermark.addEventListener('mouseleave', e => { !watermark.contains(e.relatedTarget) && (dropdownMenu.style.display = 'none'); playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/rqizlm03.wav'); });
