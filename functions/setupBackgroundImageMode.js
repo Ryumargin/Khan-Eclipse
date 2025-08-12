@@ -12,7 +12,7 @@ function setupBackgroundImageMode() {
                        document.body; // fallback caso não encontre
     
     // URL da sua imagem (substitua pela sua imagem PNG)
-    const bgImageUrl = 'https://example.com/path/to/your/image.png'; // <-- ALTERE AQUI
+    const bgImageUrl = 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTQ0eDZibnhnM2g3ZjB6OHozem9rZTFjcHQ1eDFyMnV0cm5pbjEzeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JvDzcuVBUglS9EISo7/giphy.gif'; // <-- ALTERE AQUI
     
     // Função para ativar/desativar o modo imagem de fundo
     function toggleBackgroundImageMode(enable) {
@@ -39,3 +39,4 @@ document.addEventListener('DOMContentLoaded', setupBackgroundImageMode);
 
 // ===== OUTRAS FUNÇÕES =====
 // Aqui você pode continuar com outras funções ou lógica do seu código
+
