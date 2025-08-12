@@ -60,52 +60,6 @@ function handleInput(ids, callback = null) {
     });
 }
 
-// Adicione esta função em algum lugar no mainMenu.js, por exemplo, antes de setupMenu()
-function updateLogoText() {
-    // Encontra o link do logo principal
-    const headerLogoLink = document.querySelector('a[data-testid="header-logo"]');
-    if (headerLogoLink) {
-        // Altera o aria-label para acessibilidade
-        headerLogoLink.setAttribute('aria-label', 'Khan ⌇ Eclipse');
-    }
-
-    // Procura por elementos de texto que contenham "Khan Academy" no cabeçalho
-    // Isso pode variar dependendo da estrutura HTML exata do Khan Academy
-    const headerTextElements = document.querySelectorAll('h1, h2, span, a'); // Ajuste os seletores conforme necessário
-    headerTextElements.forEach(element => {
-        // Verifica se o texto do elemento contém "Khan Academy" ou algo similar
-        // e não é o SVG em si
-        if (element.textContent.includes('Khan Academy') && !element.querySelector('svg')) {
-            element.textContent = 'Khan ⌇ Eclipse';
-        }
-        // Se houver um elemento específico para o nome da marca, como um <span> dentro do <a> do logo
-        // você pode precisar de um seletor mais específico. Exemplo:
-        // if (element.matches('a[data-testid="header-logo"] span')) {
-        //     element.textContent = 'Khan ⌇ Eclipse';
-        // }
-    });
-
-    // Se o texto "Khan Academy" for parte de um elemento SVG <text>, você precisaria de uma abordagem diferente.
-    // Exemplo (se houver um elemento <text> dentro do SVG com o nome):
-    const svgTextElement = document.querySelector('svg._1rt6g9t text');
-    if (svgTextElement) {
-        svgTextElement.textContent = 'Khan ⌇ Eclipse';
-    }
-}
-
-// ... (código existente do mainMenu.js) ...
-
-// Chame a função updateLogoText após o carregamento inicial e sempre que o DOM mudar
-// Você pode adicionar isso no plppdo.on('domChanged') ou em um setInterval se o elemento for carregado dinamicamente
-plppdo.on('domChanged', () => {
-    updateLogoText();
-});
-
-// Chame também uma vez na inicialização, caso o elemento já esteja presente
-document.addEventListener('DOMContentLoaded', updateLogoText);
-
-// ... (restante do código do mainMenu.js) ...
-
 /* Watermark */
 Object.assign(watermark.style, {
     position: 'fixed', 
