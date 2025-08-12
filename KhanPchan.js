@@ -34,7 +34,6 @@ window.features = {
     nextRecomendation: false,
     repeatQuestion: false,
     minuteFarmer: false,
-    rgbLogo: false
 };
 window.featureConfigs = {
     autoAnswerDelay: 3,
@@ -96,7 +95,6 @@ function setupMain(){
     loadScript(repoPath+'functions/minuteFarm.js', 'minuteFarm');
     loadScript(repoPath+'functions/spoofUser.js', 'spoofUser');
     loadScript(repoPath+'functions/answerRevealer.js', 'answerRevealer');
-    loadScript(repoPath+'functions/rgbLogo.js', 'rgbLogo');
     loadScript(repoPath+'functions/customBanner.js', 'customBanner');
     loadScript(repoPath+'functions/autoAnswer.js', 'autoAnswer');
 }
@@ -202,3 +200,4 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
