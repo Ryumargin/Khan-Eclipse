@@ -111,9 +111,6 @@ function replaceKhanLogoWithMoon() {
     }
 }
 
-// Chama a função para substituir a logo
-replaceKhanLogoWithMoon();
-
 /* Watermark */
 Object.assign(watermark.style, {
     position: 'fixed', 
