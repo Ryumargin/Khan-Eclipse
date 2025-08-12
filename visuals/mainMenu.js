@@ -65,8 +65,8 @@ Object.assign(watermark.style, {
     position: 'fixed', 
     top: '0', 
     left: '85%', 
-    width: '58px', // largura do quadrado aumentada
-    height: '58px', // altura do quadrado aumentada
+    width: '60px', // largura do quadrado
+    height: '60px', // altura do quadrado
     backgroundColor: 'RGB(0,0,0,0.5)',
     display: 'flex', 
     justifyContent: 'center', // centraliza o conteúdo
@@ -82,7 +82,7 @@ if (device.mobile) watermark.style.left = '55%';
 watermark.innerHTML = `
     <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/pngwing.com.png" 
          alt="PChan Icon" 
-         style="width: 50px; height: 50px;"/> <!-- Ajuste o tamanho da imagem conforme necessário -->
+         style="width: 50px; height: 50px; pointer-events: none;"/> <!-- Ajuste o tamanho da imagem conforme necessário -->
 `;
 
 document.body.appendChild(watermark);
