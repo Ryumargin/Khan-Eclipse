@@ -1,7 +1,7 @@
 // MultipleFiles/functions/moonLogo.js
 plppdo.on('domChanged', () => {
     const khanLogoSvg = document.querySelector('svg._1rt6g9t'); // Seleciona o SVG principal do logo
-    
+
     if (khanLogoSvg && features.moonLogo) { // Verifica se o SVG existe e se a feature está ativada
         // Remove os elementos existentes do logo do Khan Academy (incluindo paths e circles)
         while (khanLogoSvg.firstChild) {
