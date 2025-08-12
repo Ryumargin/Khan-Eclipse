@@ -82,7 +82,7 @@ if (device.mobile) watermark.style.left = '55%';
 watermark.innerHTML = `
     <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/pngwing.com.png" 
          alt="PChan Icon" 
-         style="width: 60px; height: 60px;"/> <!-- Ajuste o tamanho da imagem conforme necessário -->
+         style="width: 40px; height: 40px;"/> <!-- Ajuste o tamanho da imagem conforme necessário -->
 `;
 
 document.body.appendChild(watermark);
