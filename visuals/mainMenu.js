@@ -65,8 +65,8 @@ Object.assign(watermark.style, {
     position: 'fixed', 
     top: '0', 
     left: '85%', 
-    width: '55px', // largura do quadrado aumentada
-    height: '55px', // altura do quadrado aumentada
+    width: '50px', // largura do quadrado aumentada
+    height: '50px', // altura do quadrado aumentada
     backgroundColor: 'RGB(0,0,0,0.5)',
     display: 'flex', 
     justifyContent: 'center', // centraliza o conteúdo
@@ -104,7 +104,7 @@ Object.assign(dropdownMenu.style, {
 
 Object.assign(dropdownMenu.style, {
     position: 'absolute', top: '100%', left: '0', width: '220px', // Aumentado a largura
-    backgroundColor: 'rgba(0,0,0,0.7)', // Mais transparente
+    backgroundColor: 'rgba(0,0,0,0.5)', // Mais transparente
     borderRadius: '15px', // Mais arredondado
     color: 'white', fontSize: '13px', fontFamily: 'Monospace, sans-serif',
     display: 'none', flexDirection: 'column', zIndex: '1000', padding: '10px', // Aumentado o padding
