@@ -174,7 +174,7 @@ input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #fff; /* Cor da bolinha, combinando com o slider do checkbox */
+    background-color: #3a3a3b; /* Cor da bolinha, combinando com o slider do checkbox */
     cursor: grab;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border: none;
