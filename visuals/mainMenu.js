@@ -291,7 +291,7 @@ handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.f
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
 plppdo.on('domChanged', () => {
-    // Primeiro, injetamos o CSS necessário
+    // Injeta o CSS dinamicamente
     const style = document.createElement('style');
     style.textContent = `
         @keyframes shimmer-login {
@@ -310,6 +310,7 @@ plppdo.on('domChanged', () => {
         .khan-eclipse-text {
             display: inline-block;
             margin-left: 5px;
+            line-height: 1;
         }
         
         .khan-text {
@@ -317,8 +318,9 @@ plppdo.on('domChanged', () => {
             font-weight: bold;
             color: white;
             vertical-align: middle;
-            background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%), 
-                              linear-gradient(to right, #8a2be2 0%, #ab82ff 100%);
+            background-image: 
+                linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+                linear-gradient(to right, #8a2be2 0%, #ab82ff 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -332,8 +334,9 @@ plppdo.on('domChanged', () => {
             font-weight: bold;
             color: white;
             vertical-align: middle;
-            background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%), 
-                              linear-gradient(to right, #6a0dad 0%, #8a2be2 100%);
+            background-image: 
+                linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+                linear-gradient(to right, #6a0dad 0%, #8a2be2 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -344,34 +347,32 @@ plppdo.on('domChanged', () => {
     `;
     document.head.appendChild(style);
 
-    // Agora manipulamos o logo
+    // Manipulação do DOM
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink) {
-        // 1. Modificar o aria-label
         headerLogoLink.setAttribute('aria-label', 'Khan ⌇ Eclipse');
 
-        // 2. Remover o logo antigo (SVG)
+        // Remove SVG antigo
         const oldLogoSvg = headerLogoLink.querySelector('svg._1rt6g9t');
         if (oldLogoSvg) {
             oldLogoSvg.remove();
         }
 
-        // 3. Adicionar o novo texto com estilos
+        // Adiciona novo texto se não existir
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
-            const khanText = document.createElement('span');
-            khanText.textContent = 'Khan ';
-            khanText.className = 'khan-text';
-            
-            const eclipseText = document.createElement('span');
-            eclipseText.textContent = '⌇ Eclipse';
-            eclipseText.className = 'eclipse-text';
-
             const textContainer = document.createElement('div');
             textContainer.className = 'khan-eclipse-text';
-            textContainer.appendChild(khanText);
-            textContainer.appendChild(eclipseText);
-
-            headerLogoLink.insertBefore(textContainer, headerLogoLink.querySelector('svg._1rt6g9t'));
+            
+            const khanText = document.createElement('span');
+            khanText.className = 'khan-text';
+            khanText.textContent = 'Khan ';
+            
+            const eclipseText = document.createElement('span');
+            eclipseText.className = 'eclipse-text';
+            eclipseText.textContent = '⌇ Eclipse';
+            
+            textContainer.append(khanText, eclipseText);
+            headerLogoLink.prepend(textContainer);
         }
     }
 });
