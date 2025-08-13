@@ -301,16 +301,16 @@ plppdo.on('domChanged', () => {
             oldLogoSvg.remove(); // Remove o SVG antigo
         }
 
-        // 3. Adicionar a imagem da lua
-        const moonImage = document.createElement('img');
-        moonImage.src = 'https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/eclipsse.png'; // Caminho para a imagem da lua
-        moonImage.alt = 'Lua'; // Texto alternativo para a imagem
-        moonImage.style.width = '40px'; // Ajuste o tamanho para caber no espaço do logo
-        moonImage.style.height = '40px'; // Ajuste o tamanho para caber no espaço do logo
-        moonImage.style.verticalAlign = 'middle'; // Alinha verticalmente com o texto
+        // 3. Adicionar a imagem da nova logo
+        const logoImage = document.createElement('img');
+        logoImage.src = 'https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/eclipsse.png'; // Caminho para a nova imagem
+        logoImage.alt = 'Khan Academy Logo'; // Texto alternativo para a imagem
+        logoImage.style.width = '40px'; // Ajuste o tamanho para caber no espaço do logo
+        logoImage.style.height = '40px'; // Ajuste o tamanho para caber no espaço do logo
+        logoImage.style.verticalAlign = 'middle'; // Alinha verticalmente com o texto
 
         // Adiciona a imagem ao headerLogoLink
-        headerLogoLink.appendChild(moonImage);
+        headerLogoLink.appendChild(logoImage);
 
         // 4. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
         // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
@@ -338,7 +338,7 @@ plppdo.on('domChanged', () => {
             textContainer.appendChild(khanText);
             textContainer.appendChild(eclipseText);
 
-            // Inserir o texto após a imagem da lua
+            // Inserir o texto após a imagem da nova logo
             headerLogoLink.appendChild(textContainer);
         }
     }
