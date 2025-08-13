@@ -80,7 +80,7 @@ Object.assign(watermark.style, {
 });
 if (device.mobile) watermark.style.left = '55%';
 watermark.innerHTML = `
-    <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/pngwing.com.png" 
+    <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/Lua%20crescente%20roxa%20no%20c%C3%A9u%20estrelado.png" 
          alt="PChan Icon" 
          style="width: 50px; height: 50px; pointer-events: none;"/> <!-- Ajuste o tamanho da imagem conforme necessário -->
 `;
