@@ -303,7 +303,7 @@ plppdo.on('domChanged', () => {
 
         // 3. Adicionar a imagem da nova logo
         const logoImage = document.createElement('img');
-        logoImage.src = 'https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/eclipsse.png';
+        logoImage.src = '';
         logoImage.alt = 'Khan Academy Logo'; // Texto alternativo para a imagem
         logoImage.style.width = '50px'; // Aumenta o tamanho da imagem
         logoImage.style.height = '50px'; // Aumenta o tamanho da imagem
