@@ -2,25 +2,18 @@
 plppdo.on('domChanged', () => {
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink && features.moonLogo) {
-        let khanLogoSvg = headerLogoLink.querySelector('svg._1rt6g9t');
+        // Verifica se o ícone da lua já foi adicionado
+        if (!headerLogoLink.querySelector('.moon-light')) {
+            // Cria o elemento <i> para o ícone da lua
+            const moonIcon = document.createElement('i');
+            moonIcon.className = 'fas fa-moon moon-light';
+            moonIcon.style.fontSize = '28px'; // Ajuste o tamanho para caber no espaço do logo
+            moonIcon.style.color = '#a073ff'; // Cor da lua
+            moonIcon.style.filter = 'drop-shadow(0 0 8px rgba(160, 115, 255, 0.8)) drop-shadow(0 0 15px rgba(160, 115, 255, 0.6))';
+            moonIcon.style.marginRight = '5px'; // Espaçamento entre a lua e o texto
 
-        // Se o SVG original não existe mais (talvez removido por outro script), crie um placeholder
-        if (!khanLogoSvg) {
-            khanLogoSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            khanLogoSvg.classList.add('_1rt6g9t'); // Adiciona a classe original para compatibilidade
-            khanLogoSvg.setAttribute('aria-hidden', 'true');
-            khanLogoSvg.setAttribute('width', '28px'); // Tamanho para a lua
-            khanLogoSvg.setAttribute('height', '28px'); // Tamanho para a lua
-            khanLogoSvg.setAttribute('viewBox', '0 0 28 28'); // Ajusta o viewBox para o tamanho da lua
-            headerLogoLink.prepend(khanLogoSvg); // Adiciona o SVG placeholder no início do link
+            // Adiciona o ícone da lua antes do texto
+            headerLogoLink.prepend(moonIcon); // Adiciona a lua antes do texto
         }
-
-        // Remove os elementos existentes dentro do SVG (se houver)
-        while (khanLogoSvg.firstChild) {
-            khanLogoSvg.removeChild(khanLogoSvg.firstChild);
-        }
-
-        // Cria o elemento <i> para o ícone da lua
-        const moonIcon = document.createElement('i');
-        moonIcon.className = 'fas fa-moon moon-light';
-        moon
+    }
+});
