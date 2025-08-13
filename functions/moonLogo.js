@@ -1,21 +1,9 @@
 // MultipleFiles/functions/moonLogo.js
 plppdo.on('domChanged', () => {
-    const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
-    if (headerLogoLink && features.moonLogo) {
-        let khanLogoSvg = headerLogoLink.querySelector('svg._1rt6g9t');
+    const khanLogoSvg = document.querySelector('svg._1rt6g9t'); // Seleciona o SVG principal do logo
 
-        // Se o SVG original não existe mais (talvez removido por outro script), crie um placeholder
-        if (!khanLogoSvg) {
-            khanLogoSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            khanLogoSvg.classList.add('_1rt6g9t'); // Adiciona a classe original para compatibilidade
-            khanLogoSvg.setAttribute('aria-hidden', 'true');
-            khanLogoSvg.setAttribute('width', '28px'); // Tamanho para a lua
-            khanLogoSvg.setAttribute('height', '28px'); // Tamanho para a lua
-            khanLogoSvg.setAttribute('viewBox', '0 0 28 28'); // Ajusta o viewBox para o tamanho da lua
-            headerLogoLink.prepend(khanLogoSvg); // Adiciona o SVG placeholder no início do link
-        }
-
-        // Remove os elementos existentes dentro do SVG (se houver)
+    if (khanLogoSvg && features.moonLogo) { // Verifica se o SVG existe e se a feature está ativada
+        // Remove os elementos existentes do logo do Khan Academy (incluindo paths e circles)
         while (khanLogoSvg.firstChild) {
             khanLogoSvg.removeChild(khanLogoSvg.firstChild);
         }
@@ -44,14 +32,6 @@ plppdo.on('domChanged', () => {
                     color: #a073ff; /* roxo claro */
                     filter: drop-shadow(0 0 8px rgba(160, 115, 255, 0.8))
                             drop-shadow(0 0 15px rgba(160, 115, 255, 0.6));
-                }
-                /* Ajuste para o SVG do logo para centralizar o ícone */
-                svg._1rt6g9t {
-                    position: relative; /* Necessário para o posicionamento absoluto do ícone */
-                    display: inline-block; /* Para que o texto possa ficar ao lado */
-                    width: 28px; /* Largura do SVG para a lua */
-                    height: 28px; /* Altura do SVG para a lua */
-                    vertical-align: middle; /* Alinha com o texto */
                 }
             `;
             document.head.appendChild(styleElement);
