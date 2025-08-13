@@ -283,20 +283,27 @@ featuresList.push({ name: `${user.username} - UID: ${user.UID}`, type: 'nonInput
 
 addFeature(featuresList);
 
-handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo']);
+handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo', 'moonLogo']);
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
+// Dentro de mainMenu.js, ou em um novo arquivo carregado após o DOM estar pronto
 plppdo.on('domChanged', () => {
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink) {
         // 1. Modificar o aria-label
         headerLogoLink.setAttribute('aria-label', 'Khan ⌇ Eclipse');
 
-        // 2. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
+        // 2. Remover o logo antigo (SVG)
+        const oldLogoSvg = headerLogoLink.querySelector('svg._1rt6g9t');
+        if (oldLogoSvg) {
+            oldLogoSvg.remove(); // Remove o SVG antigo
+        }
+
+        // 3. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
         // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
             const khanText = document.createElement('span');
@@ -322,13 +329,8 @@ plppdo.on('domChanged', () => {
             textContainer.appendChild(khanText);
             textContainer.appendChild(eclipseText);
 
-            // Inserir o texto APÓS o SVG do logo (que será a lua)
-            const existingSvg = headerLogoLink.querySelector('svg._1rt6g9t');
-            if (existingSvg) {
-                existingSvg.after(textContainer); // Adiciona o texto depois do SVG
-            } else {
-                headerLogoLink.appendChild(textContainer); // Se o SVG ainda não existe, adiciona no final
-            }
+            // Inserir o texto antes do SVG do logo
+            headerLogoLink.insertBefore(textContainer, headerLogoLink.querySelector('svg._1rt6g9t'));
         }
     }
 });
