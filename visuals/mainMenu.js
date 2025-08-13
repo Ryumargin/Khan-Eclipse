@@ -80,7 +80,7 @@ Object.assign(watermark.style, {
 });
 if (device.mobile) watermark.style.left = '55%';
 watermark.innerHTML = `
-    <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/Lua.png" 
+    <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/Lua2.png" 
          alt="PChan Icon" 
          style="width: 45px; height: 45px; pointer-events: none;"/> <!-- Ajuste o tamanho da imagem conforme necessário -->
 `;
