@@ -291,18 +291,14 @@ handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.f
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
 plppdo.on('domChanged', () => {
-    // Injeta o CSS dinamicamente
+    // CSS com cores mais intensas e contrastantes
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes shimmer-login {
-            to {
-                background-position-x: 196.27%, 0px;
-                background-position-y: 0px, 0px;
+        @keyframes shimmer-intense {
+            0% {
+                background-position: -200% 0, 0 0;
             }
-        }
-        
-        @keyframes shimmer {
-            to {
+            100% {
                 background-position: 200% 0, 0 0;
             }
         }
@@ -311,69 +307,66 @@ plppdo.on('domChanged', () => {
             display: inline-block;
             margin-left: 5px;
             line-height: 1;
+            filter: drop-shadow(0 0 2px rgba(138, 43, 226, 0.5));
         }
         
         .khan-text {
             font-size: 32px;
-            font-weight: bold;
-            color: white;
+            font-weight: 800; /* Mais negrito */
+            letter-spacing: 0.5px;
             vertical-align: middle;
             background-image: 
-                linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
-                linear-gradient(to right, #8a2be2 0%, #ab82ff 100%);
+                linear-gradient(90deg, transparent 5%, #ffffff 50%, transparent 95%),
+                linear-gradient(to right, #8a2be2 0%, #dac4ff 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% 100%, 100% 100%;
             background-position: -200% 0, 0 0;
-            animation: shimmer-login 4s linear infinite;
+            animation: shimmer-intense 3s linear infinite;
+            text-shadow: 0 0 8px rgba(218, 196, 255, 0.3);
         }
         
         .eclipse-text {
             font-size: 32px;
-            font-weight: bold;
-            color: white;
+            font-weight: 800; /* Mais negrito */
+            letter-spacing: 0.5px;
             vertical-align: middle;
             background-image: 
-                linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
-                linear-gradient(to right, #6a0dad 0%, #8a2be2 100%);
+                linear-gradient(90deg, transparent 5%, #ffffff 50%, transparent 95%),
+                linear-gradient(to right, #6a0dad 0%, #ab82ff 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% 100%, 100% 100%;
             background-position: -200% 0, 0 0;
-            animation: shimmer 2.5s infinite linear;
+            animation: shimmer-intense 3s reverse infinite;
+            text-shadow: 0 0 8px rgba(171, 130, 255, 0.3);
         }
     `;
     document.head.appendChild(style);
 
-    // Manipulação do DOM
+    // Atualização do DOM
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
-    if (headerLogoLink) {
+    if (headerLogoLink && !headerLogoLink.querySelector('.khan-eclipse-text')) {
         headerLogoLink.setAttribute('aria-label', 'Khan ⌇ Eclipse');
-
-        // Remove SVG antigo
+        
         const oldLogoSvg = headerLogoLink.querySelector('svg._1rt6g9t');
-        if (oldLogoSvg) {
-            oldLogoSvg.remove();
-        }
+        if (oldLogoSvg) oldLogoSvg.remove();
 
-        // Adiciona novo texto se não existir
-        if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
-            const textContainer = document.createElement('div');
-            textContainer.className = 'khan-eclipse-text';
-            
-            const khanText = document.createElement('span');
-            khanText.className = 'khan-text';
-            khanText.textContent = 'Khan ';
-            
-            const eclipseText = document.createElement('span');
-            eclipseText.className = 'eclipse-text';
-            eclipseText.textContent = '⌇ Eclipse';
-            
-            textContainer.append(khanText, eclipseText);
-            headerLogoLink.prepend(textContainer);
-        }
+        const textContainer = document.createElement('div');
+        textContainer.className = 'khan-eclipse-text';
+        
+        const khanText = document.createElement('span');
+        khanText.className = 'khan-text';
+        khanText.textContent = 'Khan ';
+        
+        const eclipseText = document.createElement('span');
+        eclipseText.className = 'eclipse-text';
+        eclipseText.textContent = '⌇ Eclipse';
+        
+        textContainer.append(khanText, eclipseText);
+        headerLogoLink.prepend(textContainer);
     }
 });
 
