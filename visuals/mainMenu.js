@@ -308,14 +308,14 @@ plppdo.on('domChanged', () => {
             const khanText = document.createElement('span');
             khanText.textContent = 'Khan ';
             khanText.style.color = 'white';
-            khanText.style.fontSize = '32px'; // Alterado para 32px
+            khanText.style.fontSize = '30px'; // Alterado para 32px
             khanText.style.fontWeight = 'bold';
             khanText.style.verticalAlign = 'middle';
             
             const eclipseText = document.createElement('span');
             eclipseText.textContent = '⌇ Eclipse';
             eclipseText.style.color = 'white';
-            eclipseText.style.fontSize = '32px'; // Alterado para 32px
+            eclipseText.style.fontSize = '30px'; // Alterado para 32px
             eclipseText.style.fontWeight = 'bold';
             eclipseText.style.verticalAlign = 'middle';
 
