@@ -270,7 +270,6 @@ let featuresList = [
     { name: 'autoAnswerDelay', className: 'autoAnswerDelay', type: 'range', variable: 'features.autoAnswerDelay', attributes: 'style="display:none;" min="1" max="3" value="1"', labeled: false },
     { name: 'minuteFarm', type: 'checkbox', variable: 'features.minuteFarmer', labeled: true, label: 'Minute Farmer' },
     { name: 'customBanner', type: 'checkbox', variable: 'features.customBanner', labeled: true, label: 'Custom Banner' },
-    { name: 'moonLogo', type: 'checkbox', variable: 'features.moonLogo', labeled: true, label: 'Moon Logo' }, 
     { name: 'darkMode', type: 'checkbox', variable: 'features.darkMode', attributes: 'checked', labeled: true, label: 'Dark Mode' },
     { name: 'onekoJs', type: 'checkbox', variable: 'features.onekoJs', labeled: true, label: 'onekoJs' },
     { name: 'Custom Username', type: 'nonInput' },
@@ -283,14 +282,13 @@ featuresList.push({ name: `${user.username} - UID: ${user.UID}`, type: 'nonInput
 
 addFeature(featuresList);
 
-handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo', 'moonLogo']);
+handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo']);
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
-// Dentro de mainMenu.js, ou em um novo arquivo carregado após o DOM estar pronto
 plppdo.on('domChanged', () => {
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink) {
@@ -303,20 +301,31 @@ plppdo.on('domChanged', () => {
             oldLogoSvg.remove(); // Remove o SVG antigo
         }
 
-        // 3. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
+        // 3. Adicionar a imagem da lua
+        const moonImage = document.createElement('img');
+        moonImage.src = 'lua.png'; // Caminho para a imagem da lua
+        moonImage.alt = 'Lua'; // Texto alternativo para a imagem
+        moonImage.style.width = '40px'; // Ajuste o tamanho para caber no espaço do logo
+        moonImage.style.height = '40px'; // Ajuste o tamanho para caber no espaço do logo
+        moonImage.style.verticalAlign = 'middle'; // Alinha verticalmente com o texto
+
+        // Adiciona a imagem ao headerLogoLink
+        headerLogoLink.appendChild(moonImage);
+
+        // 4. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
         // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
             const khanText = document.createElement('span');
             khanText.textContent = 'Khan ';
             khanText.style.color = 'white'; // Cor do texto "Khan"
-            khanText.style.fontSize = '27px'; // Ajuste o tamanho da fonte conforme necessário
+            khanText.style.fontSize = '20px'; // Ajuste o tamanho da fonte conforme necessário
             khanText.style.fontWeight = 'bold';
             khanText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
 
             const eclipseText = document.createElement('span');
             eclipseText.textContent = '⌇ Eclipse';
             eclipseText.style.color = 'white'; // Cor branca para "⌇ Eclipse"
-            eclipseText.style.fontSize = '27px'; // Ajuste o tamanho da fonte conforme necessário
+            eclipseText.style.fontSize = '20px'; // Ajuste o tamanho da fonte conforme necessário
             eclipseText.style.fontWeight = 'bold';
             eclipseText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
 
@@ -329,8 +338,8 @@ plppdo.on('domChanged', () => {
             textContainer.appendChild(khanText);
             textContainer.appendChild(eclipseText);
 
-            // Inserir o texto antes do SVG do logo
-            headerLogoLink.insertBefore(textContainer, headerLogoLink.querySelector('svg._1rt6g9t'));
+            // Inserir o texto após a imagem da lua
+            headerLogoLink.appendChild(textContainer);
         }
     }
 });
