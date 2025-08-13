@@ -318,14 +318,14 @@ plppdo.on('domChanged', () => {
             const khanText = document.createElement('span');
             khanText.textContent = 'Khan ';
             khanText.style.color = 'white'; // Cor do texto "Khan"
-            khanText.style.fontSize = '24px'; // Aumenta o tamanho da fonte
+            khanText.style.fontSize = '30px'; // Aumenta o tamanho da fonte
             khanText.style.fontWeight = 'bold';
             khanText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
 
             const eclipseText = document.createElement('span');
             eclipseText.textContent = '⌇ Eclipse';
             eclipseText.style.color = 'white'; // Cor branca para "⌇ Eclipse"
-            eclipseText.style.fontSize = '24px'; // Aumenta o tamanho da fonte
+            eclipseText.style.fontSize = '30px'; // Aumenta o tamanho da fonte
             eclipseText.style.fontWeight = 'bold';
             eclipseText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
 
