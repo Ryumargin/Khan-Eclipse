@@ -307,14 +307,14 @@ plppdo.on('domChanged', () => {
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
             const khanText = document.createElement('span');
             khanText.textContent = 'Khan ';
-            khanText.style.color = 'white';
+            khanText.style.color = '#1865f2';
             khanText.style.fontSize = '27px'; // Alterado para 32px
             khanText.style.fontWeight = 'bold';
             khanText.style.verticalAlign = 'middle';
             
             const eclipseText = document.createElement('span');
             eclipseText.textContent = '⌇ Eclipse';
-            eclipseText.style.color = 'white';
+            eclipseText.style.color = '#1865f2';
             eclipseText.style.fontSize = '27px'; // Alterado para 32px
             eclipseText.style.fontWeight = 'bold';
             eclipseText.style.verticalAlign = 'middle';
