@@ -290,28 +290,46 @@ handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
+// ... (código existente) ...
+
 plppdo.on('domChanged', () => {
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink) {
         // 1. Modificar o aria-label
         headerLogoLink.setAttribute('aria-label', 'Khan ⌇ Eclipse');
+
         // 2. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
         // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
+            const khanText = document.createElement('span');
+            khanText.textContent = 'Khan ';
+            khanText.style.color = 'white'; // Cor do texto "Khan"
+            khanText.style.fontSize = '20px'; // Ajuste o tamanho da fonte conforme necessário
+            khanText.style.fontWeight = 'bold';
+            khanText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
+
+            const eclipseText = document.createElement('span');
+            eclipseText.textContent = '⌇ Eclipse';
+            eclipseText.style.color = 'white'; // Cor branca para "⌇ Eclipse"
+            eclipseText.style.fontSize = '20px'; // Ajuste o tamanho da fonte conforme necessário
+            eclipseText.style.fontWeight = 'bold';
+            eclipseText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
+
+            // Criar um container para o texto para melhor controle
             const textContainer = document.createElement('div');
             textContainer.className = 'khan-eclipse-text';
             textContainer.style.display = 'inline-block'; // Para que fique ao lado do logo
-            textContainer.style.color = 'white'; // Cor do texto
-            textContainer.style.fontSize = '20px'; // Ajuste o tamanho da fonte conforme necessário
-            textContainer.style.fontWeight = 'bold';
-            textContainer.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
-            textContainer.innerHTML = 'Khan ⌇ Eclipse'; // Adiciona o texto
-            // Inserir o texto APÓS o ícone da lua
-            const moonIcon = headerLogoLink.querySelector('.moon-light');
-            if (moonIcon) {
-                moonIcon.after(textContainer); // Adiciona o texto depois do ícone da lua
+            textContainer.style.marginLeft = '5px'; // Espaçamento entre o logo e o texto
+
+            textContainer.appendChild(khanText);
+            textContainer.appendChild(eclipseText);
+
+            // Inserir o texto APÓS o SVG do logo (que será a lua)
+            const existingSvg = headerLogoLink.querySelector('svg._1rt6g9t');
+            if (existingSvg) {
+                existingSvg.after(textContainer); // Adiciona o texto depois do SVG
             } else {
-                headerLogoLink.appendChild(textContainer); // Se o ícone da lua ainda não existe, adiciona no final
+                headerLogoLink.appendChild(textContainer); // Se o SVG ainda não existe, adiciona no final
             }
         }
     }
