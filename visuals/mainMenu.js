@@ -80,7 +80,7 @@ Object.assign(watermark.style, {
 });
 if (device.mobile) watermark.style.left = '55%';
 watermark.innerHTML = `
-    <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/pngwing.com.png" 
+    <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/Lua.png" 
          alt="PChan Icon" 
          style="width: 50px; height: 50px; pointer-events: none;"/> <!-- Ajuste o tamanho da imagem conforme necessário -->
 `;
@@ -290,7 +290,6 @@ handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
-// Dentro de mainMenu.js, ou em um novo arquivo carregado após o DOM estar pronto
 plppdo.on('domChanged', () => {
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink) {
@@ -306,21 +305,20 @@ plppdo.on('domChanged', () => {
         // 3. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
         // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
-    const khanText = document.createElement('span');
-    khanText.textContent = 'Khan ';
-    khanText.style.color = 'white';
-    khanText.style.fontSize = '30px'; // Alterado de 20px para 30px
-    khanText.style.fontWeight = 'bold';
-    khanText.style.verticalAlign = 'middle';
+            const khanText = document.createElement('span');
+            khanText.textContent = 'Khan ';
+            khanText.style.color = 'white';
+            khanText.style.fontSize = '32px'; // Alterado para 32px
+            khanText.style.fontWeight = 'bold';
+            khanText.style.verticalAlign = 'middle';
             
-    const eclipseText = document.createElement('span');
-    eclipseText.textContent = '⌇ Eclipse';
-    eclipseText.style.color = 'white';
-    eclipseText.style.fontSize = '30px'; // Alterado de 20px para 30px
-    eclipseText.style.fontWeight = 'bold';
-    eclipseText.style.verticalAlign = 'middle';
-    // ...
-}
+            const eclipseText = document.createElement('span');
+            eclipseText.textContent = '⌇ Eclipse';
+            eclipseText.style.color = 'white';
+            eclipseText.style.fontSize = '32px'; // Alterado para 32px
+            eclipseText.style.fontWeight = 'bold';
+            eclipseText.style.verticalAlign = 'middle';
+
             // Criar um container para o texto para melhor controle
             const textContainer = document.createElement('div');
             textContainer.className = 'khan-eclipse-text';
