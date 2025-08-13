@@ -291,6 +291,60 @@ handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.f
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
 plppdo.on('domChanged', () => {
+    // Primeiro, injetamos o CSS necessário
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shimmer-login {
+            to {
+                background-position-x: 196.27%, 0px;
+                background-position-y: 0px, 0px;
+            }
+        }
+        
+        @keyframes shimmer {
+            to {
+                background-position: 200% 0, 0 0;
+            }
+        }
+        
+        .khan-eclipse-text {
+            display: inline-block;
+            margin-left: 5px;
+        }
+        
+        .khan-text {
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            vertical-align: middle;
+            background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%), 
+                              linear-gradient(to right, #4f46e5 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%, 100% 100%;
+            background-position: -200% 0, 0 0;
+            animation: shimmer-login 4s linear infinite;
+        }
+        
+        .eclipse-text {
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            vertical-align: middle;
+            background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%), 
+                              linear-gradient(to right, #4338ca 0%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%, 100% 100%;
+            background-position: -200% 0, 0 0;
+            animation: shimmer 2.5s infinite linear;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Agora manipulamos o logo
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink) {
         // 1. Modificar o aria-label
@@ -299,36 +353,24 @@ plppdo.on('domChanged', () => {
         // 2. Remover o logo antigo (SVG)
         const oldLogoSvg = headerLogoLink.querySelector('svg._1rt6g9t');
         if (oldLogoSvg) {
-            oldLogoSvg.remove(); // Remove o SVG antigo
+            oldLogoSvg.remove();
         }
 
-        // 3. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
-        // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
+        // 3. Adicionar o novo texto com estilos
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
             const khanText = document.createElement('span');
             khanText.textContent = 'Khan ';
-            khanText.style.color = '#1865f2';
-            khanText.style.fontSize = '27px'; // Alterado para 32px
-            khanText.style.fontWeight = 'bold';
-            khanText.style.verticalAlign = 'middle';
+            khanText.className = 'khan-text';
             
             const eclipseText = document.createElement('span');
             eclipseText.textContent = '⌇ Eclipse';
-            eclipseText.style.color = '#1865f2';
-            eclipseText.style.fontSize = '27px'; // Alterado para 32px
-            eclipseText.style.fontWeight = 'bold';
-            eclipseText.style.verticalAlign = 'middle';
+            eclipseText.className = 'eclipse-text';
 
-            // Criar um container para o texto para melhor controle
             const textContainer = document.createElement('div');
             textContainer.className = 'khan-eclipse-text';
-            textContainer.style.display = 'inline-block'; // Para que fique ao lado do logo
-            textContainer.style.marginLeft = '5px'; // Espaçamento entre o logo e o texto
-
             textContainer.appendChild(khanText);
             textContainer.appendChild(eclipseText);
 
-            // Inserir o texto antes do SVG do logo
             headerLogoLink.insertBefore(textContainer, headerLogoLink.querySelector('svg._1rt6g9t'));
         }
     }
