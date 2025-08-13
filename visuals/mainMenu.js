@@ -61,18 +61,66 @@ function handleInput(ids, callback = null) {
 }
 
 /* Watermark */
+// Estilo do watermark
 Object.assign(watermark.style, {
-    position: 'fixed', top: '0', left: '85%', width: '150px', height: '30px', backgroundColor: 'RGB(0,0,0,0.5)',
-    color: 'white', fontSize: '15px', fontFamily: 'MuseoSans, sans-serif', display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
-    cursor: 'default', userSelect: 'none', padding: '0 10px',  borderRadius: '10px', zIndex: '1001', transition: 'transform 0.3s ease'
+    position: 'fixed', 
+    top: '0', 
+    left: '85%', 
+    width: '150px', 
+    height: '30px', 
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    color: 'white', 
+    fontSize: '15px', 
+    fontFamily: 'MuseoSans, sans-serif', 
+    display: 'flex', 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    cursor: 'default', 
+    userSelect: 'none', 
+    padding: '0 10px',  
+    borderRadius: '10px', 
+    zIndex: '1001', 
+    transition: 'transform 0.3s ease'
 });
 
-if (device.mobile) watermark.style.left = '55%'
+// Ajuste para dispositivos móveis
+if (device.mobile) watermark.style.left = '55%';
 
-// Adicionado ID para o nome Khan Cheetus para aplicar animação RGB
-watermark.innerHTML = `<span id="khanpchanName">Eclipse ⌇ TarefaSP</span> <span style="color:gray; padding-left:2px; font-family: Arial, sans-serif; font-size:10px">${ver}</span>`;
+// Adiciona o ID para o nome Khan Cheetus para aplicar animação RGB
+watermark.innerHTML = `<span id="khanpchanName" class="khan-eclipse-text">Eclipse ⌇ Menu</span> <span style="color:gray; padding-left:2px; font-family: Arial, sans-serif; font-size:10px">${ver}</span>`;
 
-document.body.appendChild(watermark);
+// Injetar o CSS necessário para a animação
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes shimmer-login {
+        to {
+            background-position-x: 196.27%, 0px;
+            background-position-y: 0px, 0px;
+        }
+    }
+    
+    @keyframes shimmer {
+        to {
+            background-position: 200% 0, 0 0;
+        }
+    }
+    
+    .khan-eclipse-text {
+        display: inline-block;
+        margin-left: 5px;
+        font-weight: bold;
+        font-size: 15px; /* Ajuste o tamanho conforme necessário */
+        background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%), 
+                          linear-gradient(to right, #8a2be2 0%, #ab82ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 100%, 100% 100%;
+        background-position: -200% 0, 0 0;
+        animation: shimmer-login 4s linear infinite;
+    }
+`;
+document.head.appendChild(style);
 
 let isDragging = false, offsetX, offsetY;
 
