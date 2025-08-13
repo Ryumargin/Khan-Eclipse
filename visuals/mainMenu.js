@@ -303,7 +303,7 @@ plppdo.on('domChanged', () => {
 
         // 3. Adicionar a imagem da lua
         const moonImage = document.createElement('img');
-        moonImage.src = 'lua.png'; // Caminho para a imagem da lua
+        moonImage.src = 'https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/eclipsse.png'; // Caminho para a imagem da lua
         moonImage.alt = 'Lua'; // Texto alternativo para a imagem
         moonImage.style.width = '40px'; // Ajuste o tamanho para caber no espaço do logo
         moonImage.style.height = '40px'; // Ajuste o tamanho para caber no espaço do logo
