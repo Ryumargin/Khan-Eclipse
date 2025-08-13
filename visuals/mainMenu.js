@@ -282,72 +282,12 @@ featuresList.push({ name: `${user.username} - UID: ${user.UID}`, type: 'nonInput
 
 addFeature(featuresList);
 
-handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo']);
+handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner']);
 handleInput(['customName', 'customPfp'])
 handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
 handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
-
-plppdo.on('domChanged', () => {
-    const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
-    if (headerLogoLink) {
-        // 1. Modificar o aria-label
-        headerLogoLink.setAttribute('aria-label', 'Khan ⌇ Eclipse');
-
-        // 2. Remover o logo antigo (SVG)
-        const oldLogoSvg = headerLogoLink.querySelector('svg._1rt6g9t');
-        if (oldLogoSvg) {
-            oldLogoSvg.remove(); // Remove o SVG antigo
-        }
-
-        // 3. Adicionar a imagem da nova logo
-        const logoImage = document.createElement('img');
-        logoImage.src = 'https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/eclipsse.png'; // Caminho para a nova imagem
-        logoImage.alt = 'Khan Academy Logo'; // Texto alternativo para a imagem
-        logoImage.style.width = '50px'; // Aumenta o tamanho da imagem
-        logoImage.style.height = '50px'; // Aumenta o tamanho da imagem
-        logoImage.style.verticalAlign = 'middle'; // Alinha verticalmente com o texto
-
-        // Adiciona um evento de erro para a imagem
-        logoImage.onerror = () => {
-            console.error('Erro ao carregar a imagem da logo.');
-        };
-
-        // Adiciona a imagem ao headerLogoLink
-        headerLogoLink.appendChild(logoImage);
-
-        // 4. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
-        // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
-        if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
-            const khanText = document.createElement('span');
-            khanText.textContent = 'Khan ';
-            khanText.style.color = 'white'; // Cor do texto "Khan"
-            khanText.style.fontSize = '24px'; // Aumenta o tamanho da fonte
-            khanText.style.fontWeight = 'bold';
-            khanText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
-
-            const eclipseText = document.createElement('span');
-            eclipseText.textContent = '⌇ Eclipse';
-            eclipseText.style.color = 'white'; // Cor branca para "⌇ Eclipse"
-            eclipseText.style.fontSize = '24px'; // Aumenta o tamanho da fonte
-            eclipseText.style.fontWeight = 'bold';
-            eclipseText.style.verticalAlign = 'middle'; // Alinha verticalmente com o logo
-
-            // Criar um container para o texto para melhor controle
-            const textContainer = document.createElement('div');
-            textContainer.className = 'khan-eclipse-text';
-            textContainer.style.display = 'inline-block'; // Para que fique ao lado do logo
-            textContainer.style.marginLeft = '5px'; // Espaçamento entre o logo e o texto
-
-            textContainer.appendChild(khanText);
-            textContainer.appendChild(eclipseText);
-
-            // Inserir o texto após a imagem da nova logo
-            headerLogoLink.appendChild(textContainer);
-        }
-    }
-});
 
 watermark.addEventListener('mouseenter', () => { dropdownMenu.style.display = 'flex'; playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/3kd01iyj.wav'); } );
 watermark.addEventListener('mouseleave', e => { !watermark.contains(e.relatedTarget) && (dropdownMenu.style.display = 'none'); playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/rqizlm03.wav'); });
