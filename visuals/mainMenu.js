@@ -289,6 +289,7 @@ handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay
 handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
 handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
 
+// Dentro de mainMenu.js, ou em um novo arquivo carregado após o DOM estar pronto
 plppdo.on('domChanged', () => {
     const headerLogoLink = document.querySelector('[data-testid="header-logo"]');
     if (headerLogoLink) {
@@ -301,18 +302,7 @@ plppdo.on('domChanged', () => {
             oldLogoSvg.remove(); // Remove o SVG antigo
         }
 
-        // 3. Adicionar a imagem da nova logo
-        const logoImage = document.createElement('img');
-        logoImage.src = 'https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/eclipsse.png'; // Caminho para a nova imagem
-        logoImage.alt = 'Khan Academy Logo'; // Texto alternativo para a imagem
-        logoImage.style.width = '40px'; // Ajuste o tamanho para caber no espaço do logo
-        logoImage.style.height = '40px'; // Ajuste o tamanho para caber no espaço do logo
-        logoImage.style.verticalAlign = 'middle'; // Alinha verticalmente com o texto
-
-        // Adiciona a imagem ao headerLogoLink
-        headerLogoLink.appendChild(logoImage);
-
-        // 4. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
+        // 3. Adicionar o texto "Khan" e "⌇ Eclipse" ao lado do logo
         // Primeiro, verifique se o texto já foi adicionado para evitar duplicatas
         if (!headerLogoLink.querySelector('.khan-eclipse-text')) {
             const khanText = document.createElement('span');
@@ -338,8 +328,8 @@ plppdo.on('domChanged', () => {
             textContainer.appendChild(khanText);
             textContainer.appendChild(eclipseText);
 
-            // Inserir o texto após a imagem da nova logo
-            headerLogoLink.appendChild(textContainer);
+            // Inserir o texto antes do SVG do logo
+            headerLogoLink.insertBefore(textContainer, headerLogoLink.querySelector('svg._1rt6g9t'));
         }
     }
 });
