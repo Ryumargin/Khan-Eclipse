@@ -30,10 +30,12 @@ e é aí que entra o **Khan ⌇ Eclipse Lunar** para transformar sua experiênci
 \`\`\`js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipse.js").then(t=>t.text()).then(eval);
 \`\`\`
+
 🔧 **Dev (beta)**:
 \`\`\`js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipse.js").then(t=>t.text()).then(eval);
 \`\`\`
+
 🪶 **Minimal (beta)**:
 \`\`\`js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipseMinimal.js").then(t=>t.text()).then(eval);
@@ -65,4 +67,3 @@ Mais informações: [GNU General Public License](https://www.gnu.org/licenses/).
 </div>
 `;
 
-console.log(readme);
