@@ -116,7 +116,7 @@ function setupVisuals() {
                 color: white;
                 vertical-align: middle;
                 background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
-                                  linear-gradient(to right, #8a2be2 0%, #ab82ff 100%);
+                                  linear-gradient(to right, #1865f2 0%, #1865f2 100%);
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -131,7 +131,7 @@ function setupVisuals() {
                 color: white;
                 vertical-align: middle;
                 background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
-                                  linear-gradient(to right, #6a0dad 0%, #8a2be2 100%);
+                                  linear-gradient(to right, #1865f2 0%, #1865f2 100%);
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -347,6 +347,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
 
 
 
