@@ -103,8 +103,8 @@ function setupVisuals() {
                 background-image: none; /* Remove background image for animation */
                 -webkit-background-clip: unset; /* Unset clip */
                 background-clip: unset; /* Unset clip */
-                -webkit-text-fill-color: #1865f2; /* Normal text color */
-                text-shadow: 0 0 5px #1865f2, 0 0 10px #1865f2, 0 0 15px #1865f2, 0 0 20px #1865f2; /* Neon effect */
+                -webkit-text-fill-color: #8a2be2; /* Normal text color */
+                text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2, 0 0 15px #8a2be2, 0 0 20px #8a2be2; /* Neon effect */
             }
             .eclipse-text {
                 font-size: 32px;
@@ -114,8 +114,8 @@ function setupVisuals() {
                 background-image: none; /* Remove background image for animation */
                 -webkit-background-clip: unset; /* Unset clip */
                 background-clip: unset; /* Unset clip */
-                -webkit-text-fill-color: #1865f2; /* Normal text color */
-                text-shadow: 0 0 5px #1865f2, 0 0 10px #1865f2, 0 0 15px #1865f2, 0 0 20px #1865f2; /* Neon effect */
+                -webkit-text-fill-color: #8a2be2; /* Normal text color */
+                text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2, 0 0 15px #8a2be2, 0 0 20px #8a2be2; /* Neon effect */
             }
         `;
         document.head.appendChild(style);
@@ -159,7 +159,7 @@ function setupVisuals() {
 
     const getTime = () => new Date().toLocaleTimeString();
     const update = async () => statsPanel.innerHTML = `
-        <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #1865f2;">Eclipse</span>
+        <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #8a2be2;">Eclipse</span>
         <span style="margin: 0 8px;">|</span><span>${fps}fps</span>
         <span style="margin: 0 8px;">|</span><span>${await getPing()}ms</span>
         <span style="margin: 0 8px;">|</span><span>${getTime()}</span>
@@ -322,6 +322,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
 
 
 
