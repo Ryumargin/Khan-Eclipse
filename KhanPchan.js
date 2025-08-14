@@ -1,5 +1,5 @@
-const ver = "V3.1.2";
-let isDev = false; // Mantido para referência, mas não afeta a carga de devTab.js neste cenário
+const ver = "V0.1.1";
+let isDev = false;
 
 const repoPath = `https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/${isDev ? "dev/" : "main/"}`;
 
@@ -347,4 +347,5 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
 
