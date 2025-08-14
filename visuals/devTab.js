@@ -1,5 +1,5 @@
 plppdo.on('domChanged', () => {
-    if (document.getElementById('khanpchanTab')) return;
+    if (document.getElementById('KhanEclipseTab')) return;
 
     function createTab(name, href = '#') { 
         const li = document.createElement('li'); 
@@ -11,21 +11,21 @@ plppdo.on('domChanged', () => {
     if (!nav) return;
 
     const section = document.createElement('section');
-    section.id = 'khanpchanTab';
+    section.id = 'KhanEclipseTab';
     section.className = '_1ozlbq6';
-    section.innerHTML = '<h2 class="_18undph9">Khanpchan</h2>';
+    section.innerHTML = '<h2 class="_18undph9">KhanEclipse</h2>';
 
     const ul = document.createElement('ul');
     const devTab = createTab('Developer', '#');
     
     devTab.querySelector('a').addEventListener('click', (e) => {
         e.preventDefault();
-        window.khanpchanWin = window.open("", "_blank");
-        if (window.khanpchanWin) {
-            window.khanpchanWin.document.write(`
+        window.KhanEclipseWin = window.open("", "_blank");
+        if (window.KhanEclipseWin) {
+            window.KhanEclipseWin.document.write(`
                 <html>
                 <head>
-                    <title>Khanpchan Developer</title>
+                    <title>KhanEclipse Developer</title>
                     <style>
                         body { 
                             font-family: Arial, sans-serif; 
@@ -111,9 +111,9 @@ plppdo.on('domChanged', () => {
 });
 
 window.createToggle = function(name, desc, varName, toggled = false) {
-    if (!window.khanpchanWin || window.khanpchanWin.closed) return;
+    if (!window.KhanEclipseWin || window.KhanEclipseWin.closed) return;
 
-    const toggleContainer = window.khanpchanWin.document.getElementById('toggles');
+    const toggleContainer = window.KhanEclipseWin.document.getElementById('toggles');
     if (!toggleContainer) return;
 
     const toggleId = `toggle-${varName}`;
@@ -136,9 +136,9 @@ window.createToggle = function(name, desc, varName, toggled = false) {
     toggleContainer.appendChild(toggleElement);
 };
 window.debug = function(message) {
-    if (!window.khanpchanWin || window.khanpchanWin.closed || !window.debugMode) return;
+    if (!window.KhanEclipseWin || window.KhanEclipseWin.closed || !window.debugMode) return;
     
-    const debugBox = window.khanpchanWin.document.getElementById('debugBox');
+    const debugBox = window.KhanEclipseWin.document.getElementById('debugBox');
     if (debugBox) {
         debugBox.innerHTML += message + '\n';
         debugBox.scrollTop = debugBox.scrollHeight;
