@@ -184,7 +184,7 @@ function setupVisuals() {
 
     const getTime = () => new Date().toLocaleTimeString();
     const update = async () => statsPanel.innerHTML = `
-        <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #8a2be2;">Eclipse</span>
+        <span style="text-shadow: -1px 0.5px 0 #p, -2px 0px 0 #1865f2;">Eclipse</span>
         <span style="margin: 0 8px;">|</span><span>${fps}fps</span>
         <span style="margin: 0 8px;">|</span><span>${await getPing()}ms</span>
         <span style="margin: 0 8px;">|</span><span>${getTime()}</span>
@@ -347,6 +347,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
 
 
 
