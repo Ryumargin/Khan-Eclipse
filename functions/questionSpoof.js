@@ -1,10 +1,10 @@
 const phrases = [ 
-    "🔥 Melhore e tenha [KhanPchan](https://github.com/Ryumargin/KhanPchan)!",
-    "🤍 Feito por [@Ryumargin](https://github.com/Ryumargin)!",
-    "☄️ Por [Ryumargin/KhanPchan](https://github.com/Ryumargin/KhanPchan).",
-    "🌟 Dê uma estrela no projeto no [GitHub](https://github.com/Ryumargin/KhanPchan)!",
-    "🐷 P-Chan sempre traz alegria!",
-    "💖 Com KhanPchan, tudo é possível!"
+    "🌙 Melhore e tenha [Khan-Eclipse](https://github.com/Ryumargin/Khan-Eclipse)!",
+    "🌌 Feito por [@Ryumargin](https://github.com/Ryumargin)!",
+    "🌠 Por [Ryumargin/Khan-Eclipse](https://github.com/Ryumargin/Khan-Eclipse).",
+    "⭐ Dê uma estrela no projeto no [GitHub](https://github.com/Ryumargin/Khan-Eclipse)!",
+    "🌜 A Lua sempre traz alegria!",
+    "🌛 Com Khan-Eclipse, tudo é possível!"
 ];
 
 const originalFetch = window.fetch;
