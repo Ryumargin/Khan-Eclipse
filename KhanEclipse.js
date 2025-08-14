@@ -88,56 +88,34 @@ async function loadCss(url) { return new Promise((resolve) => { const link = doc
 
 /* Visual Functions - Integrated directly */
 function setupVisuals() {
-
     plppdo.on('domChanged', () => {
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes shimmer-login {
-                to {
-                    background-position-x: 196.27%, 0px;
-                    background-position-y: 0px, 0px;
-                }
-            }
-
-            @keyframes shimmer {
-                to {
-                    background-position: 200% 0, 0 0;
-                }
-            }
-
             .khan-eclipse-text {
                 display: inline-block;
                 margin-left: 5px;
             }
-
             .khan-text {
                 font-size: 32px;
                 font-weight: bold;
-                color: white;
+                color: #1865f2; /* Normal color */
                 vertical-align: middle;
-                background-image: linear-gradient(90deg, transparent 0%, #1865f2 50%, transparent 100%),
-                                  linear-gradient(to right, #1865f2 0%, #1865f2 100%);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-size: 200% 100%, 100% 100%;
-                background-position: -200% 0, 0 0;
-                animation: shimmer-login 4s linear infinite;
+                background-image: none; /* Remove background image for animation */
+                -webkit-background-clip: unset; /* Unset clip */
+                background-clip: unset; /* Unset clip */
+                -webkit-text-fill-color: #1865f2; /* Normal text color */
+                text-shadow: 0 0 5px #1865f2, 0 0 10px #1865f2, 0 0 15px #1865f2, 0 0 20px #1865f2; /* Neon effect */
             }
-
             .eclipse-text {
                 font-size: 32px;
                 font-weight: bold;
-                color: white;
+                color: #1865f2; /* Normal color */
                 vertical-align: middle;
-                background-image: linear-gradient(90deg, transparent 0%, #1865f2 50%, transparent 100%),
-                                  linear-gradient(to right, #1865f2 0%, #1865f2 100%);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-size: 200% 100%, 100% 100%;
-                background-position: -200% 0, 0 0;
-                animation: shimmer 2.5s infinite linear;
+                background-image: none; /* Remove background image for animation */
+                -webkit-background-clip: unset; /* Unset clip */
+                background-clip: unset; /* Unset clip */
+                -webkit-text-fill-color: #1865f2; /* Normal text color */
+                text-shadow: 0 0 5px #1865f2, 0 0 10px #1865f2, 0 0 15px #1865f2, 0 0 20px #1865f2; /* Neon effect */
             }
         `;
         document.head.appendChild(style);
@@ -153,16 +131,13 @@ function setupVisuals() {
                 const khanText = document.createElement('span');
                 khanText.textContent = 'Khan ';
                 khanText.className = 'khan-text';
-
                 const eclipseText = document.createElement('span');
                 eclipseText.textContent = '⌇ Eclipse';
                 eclipseText.className = 'eclipse-text';
-
                 const textContainer = document.createElement('div');
                 textContainer.className = 'khan-eclipse-text';
                 textContainer.appendChild(khanText);
                 textContainer.appendChild(eclipseText);
-
                 headerLogoLink.insertBefore(textContainer, headerLogoLink.querySelector('svg._1rt6g9t'));
             }
         }
@@ -347,6 +322,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
 
 
 
