@@ -98,7 +98,7 @@ function setupVisuals() {
             .khan-text {
                 font-size: 32px;
                 font-weight: bold;
-                color: #1865f2; /* Normal color */
+                color: #8a2be2; /* Normal color */
                 vertical-align: middle;
                 background-image: none; /* Remove background image for animation */
                 -webkit-background-clip: unset; /* Unset clip */
@@ -109,7 +109,7 @@ function setupVisuals() {
             .eclipse-text {
                 font-size: 32px;
                 font-weight: bold;
-                color: #1865f2; /* Normal color */
+                color: #8a2be2; /* Normal color */
                 vertical-align: middle;
                 background-image: none; /* Remove background image for animation */
                 -webkit-background-clip: unset; /* Unset clip */
@@ -322,6 +322,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
 
 
 
