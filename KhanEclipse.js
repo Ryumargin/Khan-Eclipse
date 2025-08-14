@@ -52,7 +52,7 @@ console.log(Object.defineProperties(new Error, { toString: {value() {(new Error)
 /* Misc Styles */
 document.head.appendChild(Object.assign(document.createElement("style"),{innerHTML:"@font-face{font-family:'MuseoSans';src:url('https://corsproxy.io/?url=https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/ynddewua.ttf')format('truetype')}" }));
 document.head.appendChild(Object.assign(document.createElement('style'),{innerHTML:"::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #f1f1f1; } ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; } ::-webkit-scrollbar-thumb:hover { background: #555; }"}));
-document.querySelector("link[rel~='icon']").href = 'https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/functions/icon/pngwing.com.png';
+document.querySelector("link[rel~='icon']").href = 'https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/functions/icon/Lua.png';
 
 /* Emmiter */
 class EventEmitter{constructor(){this.events={}}on(t,e){"string"==typeof t&&(t=[t]),t.forEach(t=>{this.events[t]||(this.events[t]=[]),this.events[t].push(e)})}off(t,e){"string"==typeof t&&(t=[t]),t.forEach(t=>{this.events[t]&&(this.events[t]=this.events[t].filter(t=>t!==e))})}emit(t,...e){this.events[t]&&this.events[t].forEach(t=>{t(...e)})}once(t,e){"string"==typeof t&&(t=[t]);let s=(...i)=>{e(...i),this.off(t,s)};this.on(t,s)}};
@@ -73,7 +73,7 @@ function sendToast(text, duration=5000, gravity='bottom') { Toastify({ text: tex
 
 async function showSplashScreen() {
     splashScreen.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background-color:#000;display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;transition:opacity 0.5s ease;user-select:none;color:white;font-family:MuseoSans,sans-serif;font-size:30px;text-align:center;";
-    splashScreen.innerHTML = '<span style="color:white;">KHAN</span><span style="color:#8a2be2;"> ⌇ Eclipse</span>';
+    splashScreen.innerHTML = '<span style="color:white;">Khan </span><span style="color:#8a2be2;"> ⌇ Eclipse</span>';
     document.body.appendChild(splashScreen);
     setTimeout(() => splashScreen.style.opacity = '1', 10);
 };
@@ -347,6 +347,7 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
 
 
 
