@@ -1,4 +1,4 @@
-onst phrases = [ 
+const phrases = [ 
     "[🌙] There's nothing like a Khan ⌇ Eclipse!",
     "[🌌] Khan ⌇ Eclipse is the best!",
     "[🌠] Lunar Eclipse says hello!",
