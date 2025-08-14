@@ -6,7 +6,7 @@ const splashScreen = document.createElement('splashScreen');
 /* Misc Styles */
 document.head.appendChild(Object.assign(document.createElement("style"),{innerHTML:"@font-face{font-family:'MuseoSans';src:url('https://corsproxy.io/?url=https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/ynddewua.ttf')format('truetype')}" }));
 document.head.appendChild(Object.assign(document.createElement('style'),{innerHTML:"::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #f1f1f1; } ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; } ::-webkit-scrollbar-thumb:hover { background: #555; }"}));
-document.querySelector("link[rel~='icon']").href = 'https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/Lua.png';
+document.querySelector("link[rel~='icon']").href = 'https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/functions/icon/Lua.png';
 
 /* Emmiter */
 class EventEmitter{constructor(){this.events={}}on(t,e){"string"==typeof t&&(t=[t]),t.forEach(t=>{this.events[t]||(this.events[t]=[]),this.events[t].push(e)})}off(t,e){"string"==typeof t&&(t=[t]),t.forEach(t=>{this.events[t]&&(this.events[t]=this.events[t].filter(t=>t!==e))})}emit(t,...e){this.events[t]&&this.events[t].forEach(t=>{t(...e)})}once(t,e){"string"==typeof t&&(t=[t]);let s=(...i)=>{e(...i),this.off(t,s)};this.on(t,s)}};
@@ -17,13 +17,13 @@ new MutationObserver((mutationsList) => { for (let mutation of mutationsList) if
 /* Misc Functions */
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const playAudio = url => { const audio = new Audio(url); audio.play(); };
-const findAndClickBySelector = selector => { const element = document.querySelector(selector); if (element) { element.click(); sendToast(`⭕ Pressionando ${selector}...`, 1000); } };
+const findAndClickBySelector = selector => { const element = document.querySelector(selector); if (element) { element.click(); sendToast(`❗ Pressionando ${selector}...`, 1000); } };
 
 function sendToast(text, duration=5000, gravity='bottom') { Toastify({ text: text, duration: duration, gravity: gravity, position: "center", stopOnFocus: true, style: { background: "#000000" } }).showToast(); };
 
 async function showSplashScreen() { 
     splashScreen.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background-color:#000;display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;transition:opacity 0.5s ease;user-select:none;color:white;font-family:MuseoSans,sans-serif;font-size:30px;text-align:center;"; 
-    splashScreen.innerHTML = '<span style="color:white;">KHAN</span><span style="color:#FF8C00;">.PCHAN</span>'; // Alterado para laranja
+    splashScreen.innerHTML = '<span style="color:white;">Khan</span><span style="color:#8a2be2;"> ⌇ Eclipse</span>'; // Alterado para laranja
     document.body.appendChild(splashScreen); 
     setTimeout(() => splashScreen.style.opacity = '1', 10);
 };
@@ -41,12 +41,12 @@ function setupMain(){
     /* QuestionSpoof */
     (function () {
         const phrases = [ 
-    "🔥 Melhore e tenha [KhanPchan](https://github.com/Ryumargin/KhanPchan)!",
-    "🤍 Feito por [@Ryumargin](https://github.com/Ryumargin)!",
-    "☄️ Por [Ryumargin/KhanPchan](https://github.com/Ryumargin/KhanPchan).",
-    "🌟 Dê uma estrela no projeto no [GitHub](https://github.com/Ryumargin/KhanPchan)!",
-    "🐷 P-Chan sempre traz alegria!",
-    "💖 Com KhanPchan, tudo é possível!"
+    "🌙 Melhore e tenha [Khan-Eclipse](https://github.com/Ryumargin/Khan-Eclipse)!",
+    "🌌 Feito por [@Ryumargin](https://github.com/Ryumargin)!",
+    "🌠 Por [Ryumargin/Khan-Eclipse](https://github.com/Ryumargin/Khan-Eclipse).",
+    "⭐ Dê uma estrela no projeto no [GitHub](https://github.com/Ryumargin/Khan-Eclipse)!",
+    "🌜 A Lua sempre traz alegria!",
+    "🌛 Com Khan-Eclipse, tudo é possível!"
 ];
         
         const originalFetch = window.fetch;
@@ -114,7 +114,7 @@ function setupMain(){
             else if (init.body) body = init.body;
             if (body && input.url.includes("mark_conversions")) {
                 try {
-                    if (body.includes("termination_event")) { sendToast("🚫 Limitador de tempo bloqueado.", 1000); return; }
+                    if (body.includes("termination_event")) { sendToast("⛔ Limitador de tempo bloqueado.", 1000); return; }
                 } catch (e) { debug(`🚨 Error @ minuteFarm.js\n${e}`); }
             }
             return originalFetch.apply(this, arguments);
@@ -131,10 +131,10 @@ function setupMain(){
             `._awve9b`
         ];
         
-        khanpchanDominates = true;
+        KhanEclipseDominates = true;
         
         (async () => { 
-            while (khanpchanDominates) {
+            while (KhanEclipseDominates) {
                 const selectorsToCheck = [...baseSelectors];
     
                 for (const q of selectorsToCheck) {
@@ -150,7 +150,7 @@ function setupMain(){
     })();
 }
 /* Inject */
-if (!/^https?:\/\/([a-z0-9-]+\.)?khanacademy\.org/.test(window.location.href)) { alert("❌ Khanpchan Failed to Injected!\n\nVocê precisa executar o Khanpchan no site do Khan Academy! (https://pt.khanacademy.org/)"); window.location.href = "https://pt.khanacademy.org/"; }
+if (!/^https?:\/\/([a-z0-9-]+\.)?khanacademy\.org/.test(window.location.href)) { alert("❌ Khan-Eclipse Failed to Injected!\n\nVocê precisa executar o Khan-Eclipse no site do Khan Academy! (https://pt.khanacademy.org/)"); window.location.href = "https://pt.khanacademy.org/"; }
 
 showSplashScreen();
 
@@ -158,7 +158,7 @@ loadScript('https://cdn.jsdelivr.net/npm/darkreader@4.9.92/darkreader.min.js', '
 loadCss('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css', 'toastifyCss');
 loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 .then(async () => {    
-    sendToast("🐷 Khanpchan Minimal injetado com sucesso!");
+    sendToast("🌙 Khan-Eclipse Minimal injetado com sucesso!");
     
     playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/gcelzszy.wav');
     
