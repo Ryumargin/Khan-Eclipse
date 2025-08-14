@@ -26,20 +26,18 @@ e é aí que entra o **Khan ⌇ Eclipse Lunar** para transformar sua experiênci
 
 <h2>🔗 Versões</h2>
 
-🙂 **Stable**:
-\`\`\`js
+😎 Stable:
+```js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipse.js").then(t=>t.text()).then(eval);
-\`\`\`
-
-🔧 **Dev (beta)**:
-\`\`\`js
+```
+⭐ Dev (beta):
+```js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipse.js").then(t=>t.text()).then(eval);
-\`\`\`
-
-🪶 **Minimal (beta)**:
-\`\`\`js
+```
+🌙 Minimal (beta):
+```js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipseMinimal.js").then(t=>t.text()).then(eval);
-\`\`\`
+```
 
 ---
 
