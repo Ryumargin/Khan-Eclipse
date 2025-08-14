@@ -1,35 +1,68 @@
-# 🐷 KhanPchan
-### The most advanced Khan Academy cheat.
 
-🙂 Stable:
-```js
+<h1 align="center" style="font-family: 'Segoe UI', sans-serif; font-size: 3em; background: linear-gradient(90deg, #a073ff, #6a4fbf, #2e1f5e); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 10px #fff, 0 0 20px #a073ff;">
+🌙✨ 𝑲𝒉𝒂𝒏 ⌇ 𝑬𝒄𝒍𝒊𝒑𝒔𝒆 𝑳𝒖𝒏𝒂𝒓 🌌⭐
+</h1>
+
+<p align="center"><i>𝘈 𝘮𝘢𝘨𝘪𝘤𝘢 𝘥𝘢 𝘭𝘶𝘢 𝘦 𝘢 𝘧𝘰𝘧𝘶𝘳𝘦𝘻𝘢 𝘦𝘮 𝘶𝘮 𝘤𝘩𝘦𝘢𝘵 𝘱𝘢𝘳𝘢 𝘰 𝘒𝘩𝘢𝘯 𝘈𝘤𝘢𝘥𝘦𝘮𝘺</i></p>
+
+---
+
+🌑 **Inspirado no Khan Ware, mas sem complicações!**  
+🌙 Feito para quem **não tem tempo** ou **quer algo rápido e simples** no Khan Academy.  
+🌌 Nós sabemos que às vezes o Khan pode ficar... um pouco entediante 😴,  
+e é aí que entra o **Khan ⌇ Eclipse Lunar** para transformar sua experiência em algo  
+**fofo, mágico e eficiente** ✨.
+
+---
+
+<h2>🌠 Como funciona?</h2>
+
+🌓 Automatiza lições, tarefas e quizzes, respondendo tudo automaticamente.  
+🌌 Basta ativar e deixar a magia acontecer.  
+🌙 Rápido, discreto e otimizado para economizar seu tempo.  
+⭐ Zero complicação — clique, carregue, pronto!  
+
+---
+
+<h2>🔗 Versões</h2>
+
+🙂 **Stable**:
+\`\`\`js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipse.js").then(t=>t.text()).then(eval);
-```
-🔧 Dev (beta):
-```js
+\`\`\`
+🔧 **Dev (beta)**:
+\`\`\`js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipse.js").then(t=>t.text()).then(eval);
-```
-🪶 Minimal (beta):
-```js
+\`\`\`
+🪶 **Minimal (beta)**:
+\`\`\`js
 javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/KhanEclipseMinimal.js").then(t=>t.text()).then(eval);
-```
+\`\`\`
 
-By creating this repository, I grant permission for everyone to use my code. However, since it is licensed under the GPL, any modifications or distributions must also be open source.
+---
 
-Thank you all for your support over the last few months.
+<h2>🌙 Créditos</h2>
 
-Take a look at other projects like Khan Destroyer. Although it's quite broken, my code might help fix it properly!
+Feito com 💖, 🌠 e 🌌 por **Ryumargin** e seu amigo **Pchan** 🐷✨  
+Pensado para que suas noites de estudo sejam **leves, mágicas e produtivas** 🌜.  
 
-### As gaben once said:
-> _"After 9 years in development hopefully it will be worth the wait, thanks and have fun."_
+---
 
---- 
-Copyright (C) 2024 Nix
+<h2>📜 Licença</h2>
 
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
+Distribuído sob a licença **GPL v3**.  
+Você é livre para usar, modificar e compartilhar — mantendo tudo **open source**.  
+Mais informações: [GNU General Public License](https://www.gnu.org/licenses/).
 
-<p align="center">
-  <a href="https://emoji.gg/emoji/5349-hellokittybyebye">
-    <img src="https://cdn3.emoji.gg/emojis/5349-hellokittybyebye.png" width="128px" height="128px" alt="HelloKittyByeBye">
-  </a>
-</p>
+---
+
+<div align="center">
+
+✨🌙⭐🌌  
+<img src="https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/functions/icon/Lua2.png" width="180px" style="filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 20px #a073ff);">  
+🌌⭐🌙✨  
+
+</div>
+`;
+
+console.log(readme);
