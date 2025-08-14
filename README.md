@@ -1,26 +1,37 @@
-
-<h1 align="center" style="font-family: 'Segoe UI', sans-serif; font-size: 3em; background: linear-gradient(90deg, #a073ff, #6a4fbf, #2e1f5e); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 10px #fff, 0 0 20px #a073ff;">
-🌙✨ 𝑲𝒉𝒂𝒏 ⌇ 𝑬𝒄𝒍𝒊𝒑𝒔𝒆 𝑳𝒖𝒏𝒂𝒓 🌌⭐
+<h1 align="center" style="
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 3em;
+  background: linear-gradient(90deg, #dcd6ff, #a073ff, #4a3b91);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 8px #fff, 0 0 18px #a073ff;
+">
+🌙✨ Khan ⌇ Eclipse Lunar 🌌⭐
 </h1>
 
-<p align="center"><i>𝘈 𝘮𝘢𝘨𝘪𝘤𝘢 𝘥𝘢 𝘭𝘶𝘢 𝘦 𝘢 𝘧𝘰𝘧𝘶𝘳𝘦𝘻𝘢 𝘦𝘮 𝘶𝘮 𝘤𝘩𝘦𝘢𝘵 𝘱𝘢𝘳𝘢 𝘰 𝘒𝘩𝘢𝘯 𝘈𝘤𝘢𝘥𝘦𝘮𝘺</i></p>
+<p align="center" style="font-style: italic; font-size: 1.1em;">
+A serene, refined, and efficient approach to mastering Khan Academy — illuminated by the calm light of the moon.
+</p>
 
 ---
 
-🌑 **Inspirado no Khan Ware, mas sem complicações!**  
-🌙 Feito para quem **não tem tempo** ou **quer algo rápido e simples** no Khan Academy.  
-🌌 Nós sabemos que às vezes o Khan pode ficar... um pouco entediante 😴,  
-e é aí que entra o **Khan ⌇ Eclipse Lunar** para transformar sua experiência em algo  
-**fofo, mágico e eficiente** ✨.
+## 🌑 About
+
+**Khan ⌇ Eclipse Lunar** is inspired by Khan Ware, but designed without unnecessary complexity.  
+It is created for students who value their time and prefer a more seamless, graceful experience on Khan Academy.  
+We all know that, at times, the platform can feel repetitive and draining.  
+This project exists to **replace monotony with clarity**,  
+and to let you move forward with a sense of calm —  
+as if your work were done under a quiet, starry sky ✨.
 
 ---
 
-<h2>🌠 Como funciona?</h2>
+## 🌠 How It Works
 
-🌓 Automatiza lições, tarefas e quizzes, respondendo tudo automaticamente.  
-🌌 Basta ativar e deixar a magia acontecer.  
-🌙 Rápido, discreto e otimizado para economizar seu tempo.  
-⭐ Zero complicação — clique, carregue, pronto!  
+- 🌓 **Automated Learning** — Lessons, exercises, and quizzes are completed automatically with accuracy.  
+- 🌌 **Effortless Activation** — Simply enable it and allow the script to work in the background.  
+- 🌙 **Time Efficiency** — Designed for learners with demanding schedules.  
+- ⭐ **No Setup Required** — A single click and you are ready to begin.
 
 ---
 
@@ -41,27 +52,36 @@ javascript:fetch("https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/
 
 ---
 
-<h2>🌙 Créditos</h2>
+## 🌙 Philosophy
 
-Feito com 💖, 🌠 e 🌌 por **Ryumargin** e seu amigo **Pchan** 🐷✨  
-Pensado para que suas noites de estudo sejam **leves, mágicas e produtivas** 🌜.  
+This is not simply a shortcut —  
+it is a tool designed to restore balance between learning and living.  
+We believe education should **enhance life, not consume it entirely**.  
+By streamlining repetitive tasks, Khan ⌇ Eclipse Lunar leaves you with more time  
+for the studies and experiences that truly matter.  
 
 ---
 
-<h2>📜 Licença</h2>
+## 🤝 Credits
 
-Distribuído sob a licença **GPL v3**.  
-Você é livre para usar, modificar e compartilhar — mantendo tudo **open source**.  
-Mais informações: [GNU General Public License](https://www.gnu.org/licenses/).
+Developed with dedication by **Ryumargin** and his friend **Pchan** 🐷.  
+Their intention was simple:  
+> _To bring efficiency, elegance, and a touch of moonlight into the learning process._
+
+---
+
+## 📜 License
+
+Distributed under the **GNU GPL v3 License**.  
+You may use, modify, and share this software — provided all versions remain **open source**.  
+Full license: [GNU General Public License](https://www.gnu.org/licenses/).
 
 ---
 
 <div align="center">
 
 ✨🌙⭐🌌  
-<img src="https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/functions/icon/Lua2.png" width="180px" style="filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 20px #a073ff);">  
-🌌⭐🌙✨  
+<img src="https://raw.githubusercontent.com/Ryumargin/Khan-Eclipse/refs/heads/main/functions/icon/Lua2.png" width="180px" style="filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 15px #a073ff); border-radius: 50%;">  
+🌌⭐🌙✨  : ) 
 
 </div>
-`;
-
