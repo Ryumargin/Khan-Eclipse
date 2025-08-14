@@ -88,40 +88,7 @@ async function loadCss(url) { return new Promise((resolve) => { const link = doc
 
 /* Visual Functions - Integrated directly */
 function setupVisuals() {
-    // Watermark (removed from mainMenu.js)
-    Object.assign(watermark.style, {
-        position: 'fixed',
-        top: '0',
-        left: '85%',
-        width: '60px',
-        height: '60px',
-        backgroundColor: 'RGB(0,0,0,0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        cursor: 'default',
-        userSelect: 'none',
-        padding: '0',
-        borderRadius: '10px',
-        zIndex: '1001',
-        transition: 'transform 0.3s ease'
-    });
-    if (device.mobile) watermark.style.left = '55%';
-    watermark.innerHTML = `
-        <img src="https://raw.githubusercontent.com/Ryumargin/KhanPchan/refs/heads/main/functions/icon/pngwing.com.png"
-             alt="PChan Icon"
-             style="width: 50px; height: 50px; pointer-events: none;"/>
-    `;
-    document.body.appendChild(watermark);
 
-    // No dragging or dropdown interaction for watermark as per request
-    // watermark.addEventListener('mousedown', e => { if (!dropdownMenu.contains(e.target)) { isDragging = true; offsetX = e.clientX - watermark.offsetLeft; offsetY = e.clientY - watermark.offsetTop; watermark.style.transform = 'scale(0.9)'; } });
-    // watermark.addEventListener('mouseup', () => { isDragging = false; watermark.style.transform = 'scale(1)'; });
-    // document.addEventListener('mousemove', e => { if (isDragging) { let newX = Math.max(0, Math.min(e.clientX - offsetX, window.innerWidth - watermark.offsetWidth)); let newY = Math.max(0, Math.min(e.clientY - offsetY, window.innerHeight - watermark.offsetHeight)); Object.assign(watermark.style, { left: `${newX}px`, top: `${newY}px` }); dropdownMenu.style.display = 'none'; } });
-    // watermark.addEventListener('mouseenter', () => { dropdownMenu.style.display = 'flex'; playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/3kd01iyj.wav'); } );
-    // watermark.addEventListener('mouseleave', e => { !watermark.contains(e.relatedTarget) && (dropdownMenu.style.display = 'none'); playAudio('https://r2.e-z.host/4d0a0bea-60f8-44d6-9e74-3032a64a9f32/rqizlm03.wav'); });
-
-    // Khan ⌇ Eclipse Logo (moved from mainMenu.js)
     plppdo.on('domChanged', () => {
         const style = document.createElement('style');
         style.textContent = `
@@ -380,3 +347,4 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
 @marcus.floriano.oliveira
 @Ryumargin
 */
+
